@@ -8,9 +8,9 @@ referred_by = st.selectbox("Who sent you to this app?", ("DORA", "BUILD Event Mo
 st.write(referred_by)
                            
 st.stop()
-if referred_by == "BUILD Event Moderator":
+if referred_by = "BUILD Event Moderator":
   my_event = st.selectbox("What event are you attending?", ("Warsaw -  25 Mar 2024", "Bay Area - 11 Apr 2024","Dallas - 25 Apr 2024"))
-else if referred_by == "DORA":
+else if referred_by = "DORA":
   my_workshop = st.selectbox("Which workshop/badge are you working on?", ("Badge 1: DWW", "Badge 2: CMCW", "Badge 3: DABW", "Badge 4: DLKW", "Badge 5:DNGW"))
   
              
