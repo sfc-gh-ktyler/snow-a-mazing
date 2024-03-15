@@ -10,13 +10,13 @@ badge_options = {"Essentials/DORA": ['Badge 1: DWW', 'Badge 2: CMCW', 'Badge 3: 
                 }
 
 
-col1, col2, col3 = st.columns([1, 2, 1])
+col1, col2 = st.columns([1, 1])
 with col1:
     type = st.selectbox("Choose Course Type", options=badge_options.keys(), key=1)
 with col2:
     course = st.selectbox("Choose Workshop or Badge", options=badge_options[type], key=2)
-with col3:
-    unit = st.selectbox("Choose Unit", options=('Yes','No'), key=3)
+
+email = st.text_input('Enter your email address:')
 
 
 
