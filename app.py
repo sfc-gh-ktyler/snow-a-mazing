@@ -6,7 +6,9 @@ st.write('We think you are! Someone likely sent you to this page to register for
 st.write('Begin by telling us who sent you...')
 referred_by = st.selectbox('Who sent you to this app?', ('<choose one>','DORA', 'BUILD Event Moderator', 'Josh'))
 time_for_step_2 = st.button ('Submit')
-                           
+
+if time_for_step_2:
+  write('They chose', referred_by)
 
   
   
