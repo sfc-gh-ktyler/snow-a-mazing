@@ -15,7 +15,7 @@ if time_for_step_2:
     st.write('Yay DORA!')
   elif referred_by == 'BUILD Event Moderator':
     st.write('Yay BUILD!')
-  else referred_by == 'Josh':
+  else:
     st.write('Yay Josh!')
     
   
