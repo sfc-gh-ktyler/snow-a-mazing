@@ -5,10 +5,11 @@ st.write('We think you are! Someone likely sent you to this page to register for
 
 st.write('Begin by telling us who sent you...')
 referred_by = st.selectbox('Who sent you to this app?', ('<choose one>','DORA', 'BUILD Event Moderator', 'Josh'))
-# st.write(referred_by)
+time_for_step_2 = st.button ('Submit')
                            
-if referred_by = 'BUILD Event Moderator':
-  st.write('They came from a BUILD event!')
+if time_for_step_2:
+  if referred_by = '<choose one>':  
+    st.write('Who is this clown?')
   
   
              
