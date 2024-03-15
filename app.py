@@ -9,8 +9,15 @@ time_for_step_2 = st.button ('Submit')
 
 if time_for_step_2:
   st.write('They chose', referred_by)
-  if referred_by == 'Josh':
+  if referred_by == '<choose one>':
+    st.write('You were supposed to choose a value from the list before you clicked the button')
+  else if referred_by == 'DORA':
+    st.write('Yay DORA!')
+  else if referred_by == 'BUILD Event Moderator':
+    st.write('Yay BUILD!')
+  else if referred_by == 'Josh':
     st.write('Yay Josh!')
+    
   
   
              
