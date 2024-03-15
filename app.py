@@ -12,11 +12,16 @@ if time_for_step_2:
     st.write('Dude? Seriously? You were supposed to choose a value from the list before you clicked the button.')
   elif referred_by == 'DORA':
     st.write('Yay DORA!')
+    workshop = st.selectbox('Which workshop/badge are you currently working on?', ('Badge 1: DWW', 'Badge 2: CMCW', 'Badge 3: DABW', 'Badge 4: DLKW', 'Badge 5: DNGW'))
+    st.write('DORA Says: I love that workshop!' + workshop + 'is my FAVORITE of the Hands On Essentials Workshops!!')
   elif referred_by == 'BUILD Event Moderator':
     st.write('Yay BUILD!')
+    build_local = st.selectbox('Which event are you currently attending?', ('Warsaw: 25 Mar 2024', 'Bay Area: 11 Apr 2024', 'Dallas: 25 Apr 2024'))
   else:
     st.write('Yay Josh!')
-    
+    build_local = st.selectbox('Which SE College Course are you currently working on?', ('College A', 'College B', 'College C'))
+
+
   
   
              
