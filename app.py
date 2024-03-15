@@ -8,7 +8,7 @@ referred_by = st.selectbox('Who sent you to this app?', ('<choose one>','DORA', 
 time_for_step_2 = st.button ('Submit')
 
 if time_for_step_2:
-  write('They chose', referred_by)
+  st.write('They chose', referred_by)
 
   
   
