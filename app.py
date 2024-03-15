@@ -18,23 +18,7 @@ with col2:
 with col3:
     unit = st.selectbox("Choose Unit", options=('Yes','No'), key=3)
 
-if time_for_step_2:
-  step = 2
-  if referred_by == '<choose one>' and step ==2:
-    st.write('Dude? Seriously? You were supposed to choose a value from the list before you clicked the button.')
-  elif referred_by == 'DORA' and step ==2::
-    st.write('Yay DORA!')
-    workshop = st.selectbox('Which workshop/badge are you currently working on?', ())
-    step_3_dora = st.button ('Submit Workshop Name')
-    st.write('DORA Says: I love that workshop!' + workshop + 'is my FAVORITE of the Hands On Essentials Workshops!!')
-  elif referred_by == 'BUILD Event Moderator':
-    st.write('Yay BUILD!')
-    build_local = st.selectbox('Which event are you currently attending?', ())
-    step_3_build = st.button ('Submit Build Event')
-  else:
-    st.write('Yay Josh!')
-    build_local = st.selectbox('Which SE College Course are you currently working on?', ('College A', 'College B', 'College C'))
-    step_3_se_college = st.button ('Submit SE College')
+
 
 
   
