@@ -9,7 +9,8 @@ time_for_step_2 = st.button ('Submit')
 
 if time_for_step_2:
   st.write('They chose', referred_by)
-
+  if referred_by == 'Josh':
+    st.write('Yay Josh!')
   
   
              
