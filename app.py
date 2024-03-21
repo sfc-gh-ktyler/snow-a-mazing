@@ -8,9 +8,11 @@ st.write('You\'re here to introduce yourself so that we\'ll know who to send you
 st.write("Your UNI ID can be found in the top-right corner of the workshop page. It begins with 053 and is a string of letters and numbers.")
 uni_id = st.text_input('Enter your learn.snowflake.com UNI ID:')
 
-st.write(uni_id[:3])
+starts_right = uni_id[:3]
+st.write(starts_right)
 
-if uni_id[:3] = "005":
+
+if uni_id[:3] = '005':
   st.write = 'So far, so good'
 
 
