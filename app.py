@@ -9,10 +9,11 @@ st.write("Your UNI ID can be found in the top-right corner of the workshop page.
 uni_id = st.text_input('Enter your learn.snowflake.com UNI ID:')
 
 starts_right = uni_id[:3]
-st.write(starts_right)
+
 if starts_right == '005':
   st.write('So far so good')
-
+  if len(uni_id)<20 and len(uni_id)>17:
+    st.write('Length seems right')
 
 
 
