@@ -12,8 +12,7 @@ starts_right = uni_id[:3]
 st.write(starts_right)
 
 
-if uni_id[:3] = '005':
-  st.write = 'So far, so good'
+
 
 
   
