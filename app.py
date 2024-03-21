@@ -10,10 +10,8 @@ uni_id = st.text_input('Enter your learn.snowflake.com UNI ID:')
 
 starts_right = uni_id[:3]
 
-if starts_right == '005':
-  st.write('So far so good')
-  if len(uni_id)<20 and len(uni_id)>17:
-    st.write('Length seems right')
+if starts_right == '005' and len(uni_id)<20 and len(uni_id)>17:
+    st.write('Seems Legit')
 
 
 
