@@ -10,7 +10,7 @@ uni_id = st.text_input('Enter your learn.snowflake.com UNI ID:')
 
 starts_right = uni_id[:3]
 st.write(starts_right)
-if starts_right = '005':
+if starts_right == '005':
   st.write('So far so good')
 
 
