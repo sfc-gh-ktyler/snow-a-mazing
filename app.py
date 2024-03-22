@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd
 
+cnx=st.connection("snowflake")
+
 # Load the table as a dataframe using the Snowpark Session.
 @st.cache_data
 def load_uni_users():
