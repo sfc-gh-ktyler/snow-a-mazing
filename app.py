@@ -3,8 +3,18 @@ import streamlit_authenticator as stauth
 import pandas as pd
 
 cnx=st.connection("snowflake")
-learners_t = session.table("amazing.app.uni_users")
-st.dataframe(learners_t)
+
+# Load the table as a dataframe using the Snowpark Session.
+@st.cache_data
+def load_table():
+    session = conn.session()
+    return session.table("UNI_USERS").to_pandas()
+
+df = load_table()
+
+# Print results.
+for row in df.itertuples():
+    st.write(f"{row.NAME} has a :{row.PET}:")
 
 st.header('Are You Snow-A-Mazing?')
 st.write('Welcome to the learn.snowflake.com Workshop Badge Management app!')
