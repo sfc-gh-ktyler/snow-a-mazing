@@ -12,13 +12,15 @@ def load_uni_users():
 
 uni_users_df = load_uni_users()
 
-st.dataframe(uni_users_df)
-
 st.header('Are You Snow-A-Mazing?')
 st.write('Welcome to the learn.snowflake.com Workshop Badge Management app!')
 
 uni_id = st.text_input('Enter your learn.snowflake.com UNI ID:')
 uni_email = st.text_input('Enter your learn.snowflake.com EMAIL Address:')
+find_my_uni_record = st.button("Find my UNI User Info")
+
+this_user_df =  uni_users_df.query('UNI_ID=="005VI0000052bmzYAA" & EMAIL=="femke.van.verseveld@inergy.nl" ')
+st.dataframe(this_user_df)
 
 st.write("TIPS:")
 st.write("Your UNI ID can be found in the top-right corner of the workshop page. It begins with 053 and is a string of letters and numbers.")
