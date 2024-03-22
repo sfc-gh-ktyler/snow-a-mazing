@@ -1,5 +1,7 @@
 import streamlit as st
-import streamlit_authenticator as stauth
+from st_snowauth import snowauth_session
+
+# import streamlit_authenticator as stauth
 import pandas as pd
 
 cnx=st.connection("snowflake")
@@ -34,6 +36,11 @@ st.subheader("TIPS:")
 st.write("Your UNI ID can be found in the top-right corner of the workshop page. It begins with 053 and is a string of letters and numbers.")
 st.write("Your learn.snowflake.com UNI_ID and EMAIL can be found at https://learn.snowflake.com/account/settings")
 st.write("-----")
+
+session = snowauth_session()
+
+st.markdown("## This (and below) is only seen after authentication")
+st.write("You're too legit to quit!")
 
 starts_right = uni_id[:3]
 
