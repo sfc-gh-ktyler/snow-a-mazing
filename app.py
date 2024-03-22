@@ -24,10 +24,10 @@ if find_my_uni_record:
     this_user_df =  uni_users_df.query('UNI_ID=="' + uni_id + '" & EMAIL=="'+ uni_email +'" ')
     user_rows = this_user_df.shape[0]
     
-if user_rows>=1:
-    st.dataframe(this_user_df)
-else:
-    st.write("There is no record of the UNI_ID/EMAIL combination you entered. Please double-check the info you entered, read the tips below, and try again") 
+    if user_rows>=1:
+        st.dataframe(this_user_df)
+    else:
+        st.write("There is no record of the UNI_ID/EMAIL combination you entered. Please double-check the info you entered, read the tips below, and try again") 
 
 st.write("-----")
 st.subheader("TIPS:")
