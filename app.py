@@ -1,12 +1,11 @@
 import streamlit as st
 import pandas as pd
-import streamlit_authenticator as stauth
 
 # Load the table as a dataframe using the Snowpark Session.
 @st.cache_data
 def load_uni_users():
     session = cnx.session()
-    return session.table("UNI_USERS").to_pandas()
+    return session.table("UNI_USER_UUID").to_pandas()
 
 uni_users_df = load_uni_users()
 
@@ -14,12 +13,12 @@ st.header('Are You Snow-A-Mazing?')
 st.write('Welcome to the learn.snowflake.com Workshop Badge Management app!')
 
 uni_id = st.text_input('Enter your learn.snowflake.com UNI ID:')
-uni_email = st.text_input('Enter your learn.snowflake.com EMAIL Address:')
+uni_uuid = st.text_input('Enter the secret UUID displayed on the DORA is Listening Page:')
 find_my_uni_record = st.button("Find my UNI User Info")
 
 if find_my_uni_record:
-    #this_user_df =  uni_users_df.query('UNI_ID=="005VI0000052bmzYAA" & EMAIL=="femke.van.verseveld@inergy.nl" ')
-    this_user_df =  uni_users_df.query('UNI_ID=="' + uni_id + '" & EMAIL=="'+ uni_email +'" ')
+    #this_user_df =  uni_users_df.query('UNI_ID=="005VI0000052bmzYAA" & =="femke.van.verseveld@inergy.nl" ')
+    this_user_df =  uni_users_df.query('UNI_ID=="' + uni_id + '" & UNI_UUID=="'+ uni_uuid +'" ')
     user_rows = this_user_df.shape[0]
     
     if user_rows>=1:
@@ -33,11 +32,7 @@ st.write("Your UNI ID can be found in the top-right corner of the workshop page.
 st.write("Your learn.snowflake.com UNI_ID and EMAIL can be found at https://learn.snowflake.com/account/settings")
 st.write("-----")
 
-# session = snowauth_session()
 
-st.markdown("## This (and below) is only seen after authentication")
-
-if LOGGED_IN == True:
   st.write("You're too legit to quit!")
 
   starts_right = uni_id[:3]
