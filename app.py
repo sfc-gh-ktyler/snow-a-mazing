@@ -14,10 +14,8 @@ __login__obj = __login__(auth_token = "courier_auth_token",
 
 LOGGED_IN = __login__obj.build_login_ui()
 
-if LOGGED_IN == True:
-
-    st.markown("Your Streamlit Application Begins here!")
-    cnx=st.connection("snowflake")
+#    st.markown("Your Streamlit Application Begins here!")
+#    cnx=st.connection("snowflake")
 
 # Load the table as a dataframe using the Snowpark Session.
 @st.cache_data
@@ -50,15 +48,17 @@ st.write("Your UNI ID can be found in the top-right corner of the workshop page.
 st.write("Your learn.snowflake.com UNI_ID and EMAIL can be found at https://learn.snowflake.com/account/settings")
 st.write("-----")
 
-session = snowauth_session()
+# session = snowauth_session()
 
 st.markdown("## This (and below) is only seen after authentication")
-st.write("You're too legit to quit!")
 
-starts_right = uni_id[:3]
+if LOGGED_IN == True:
+  st.write("You're too legit to quit!")
 
-if starts_right == '005' and len(uni_id)<20 and len(uni_id)>17:
-    st.write('Seems Legit')
+  starts_right = uni_id[:3]
+
+  if starts_right == '005' and len(uni_id)<20 and len(uni_id)>17:
+      st.write('Seems Legit')
 
 
 
