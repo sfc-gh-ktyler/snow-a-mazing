@@ -33,12 +33,12 @@ st.write("Your learn.snowflake.com UNI_ID and EMAIL can be found at https://lear
 st.write("-----")
 
 
-  st.write("You're too legit to quit!")
+st.write("You're too legit to quit!")
 
-  starts_right = uni_id[:3]
+starts_right = uni_id[:3]
 
-  if starts_right == '005' and len(uni_id)<20 and len(uni_id)>17:
-      st.write('Seems Legit')
+if starts_right == '005' and len(uni_id)<20 and len(uni_id)>17:
+    st.write('Seems Legit')
 
 
 
