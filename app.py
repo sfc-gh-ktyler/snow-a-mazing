@@ -6,11 +6,11 @@ cnx=st.connection("snowflake")
 
 # Load the table as a dataframe using the Snowpark Session.
 @st.cache_data
-def load_table():
-    session = conn.session()
+def load_uni_users():
+    session = cnx.session()
     return session.table("UNI_USERS").to_pandas()
 
-df = load_table()
+uni_users_df = load_uni_users()
 
 # Print results.
 for row in df.itertuples():
