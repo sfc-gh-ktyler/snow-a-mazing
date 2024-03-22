@@ -12,9 +12,7 @@ def load_uni_users():
 
 uni_users_df = load_uni_users()
 
-# Print results.
-for row in df.itertuples():
-    st.write(f"{row.NAME} has a :{row.PET}:")
+st.dataframe(uni_users_df)
 
 st.header('Are You Snow-A-Mazing?')
 st.write('Welcome to the learn.snowflake.com Workshop Badge Management app!')
