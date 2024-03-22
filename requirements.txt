@@ -1,4 +1,3 @@
 # requirements.txt
-streamlit-login-auth-ui
-#streamlit-authenticator
+streamlit-authenticator
 snowflake-snowpark-python
