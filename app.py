@@ -19,11 +19,18 @@ uni_id = st.text_input('Enter your learn.snowflake.com UNI ID:')
 uni_email = st.text_input('Enter your learn.snowflake.com EMAIL Address:')
 find_my_uni_record = st.button("Find my UNI User Info")
 
-#this_user_df =  uni_users_df.query('UNI_ID=="005VI0000052bmzYAA" & EMAIL=="femke.van.verseveld@inergy.nl" ')
-this_user_df =  uni_users_df.query('UNI_ID=="' + uni_id + '" & EMAIL=="'+ uni_email +'" ')
-st.dataframe(this_user_df)
+if find_my_uni_record:
+    #this_user_df =  uni_users_df.query('UNI_ID=="005VI0000052bmzYAA" & EMAIL=="femke.van.verseveld@inergy.nl" ')
+    this_user_df =  uni_users_df.query('UNI_ID=="' + uni_id + '" & EMAIL=="'+ uni_email +'" ')
+    user_rows = this_user_df.shape[0]
+    
+if user_rows>=1:
+    st.dataframe(this_user_df)
+else:
+    st.write("There is no record of the UNI_ID/EMAIL combination you entered. Please double-check the info you entered, read the tips below, and try again") 
 
-st.write("TIPS:")
+st.write("-----")
+st.subheader("TIPS:")
 st.write("Your UNI ID can be found in the top-right corner of the workshop page. It begins with 053 and is a string of letters and numbers.")
 st.write("Your learn.snowflake.com UNI_ID and EMAIL can be found at https://learn.snowflake.com/account/settings")
 st.write("-----")
