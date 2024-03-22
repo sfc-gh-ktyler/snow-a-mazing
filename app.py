@@ -19,7 +19,8 @@ uni_id = st.text_input('Enter your learn.snowflake.com UNI ID:')
 uni_email = st.text_input('Enter your learn.snowflake.com EMAIL Address:')
 find_my_uni_record = st.button("Find my UNI User Info")
 
-this_user_df =  uni_users_df.query('UNI_ID=="005VI0000052bmzYAA" & EMAIL=="femke.van.verseveld@inergy.nl" ')
+#this_user_df =  uni_users_df.query('UNI_ID=="005VI0000052bmzYAA" & EMAIL=="femke.van.verseveld@inergy.nl" ')
+this_user_df =  uni_users_df.query('UNI_ID=="' + uni_id + '" & EMAIL=="'+ uni_email +'" ')
 st.dataframe(this_user_df)
 
 st.write("TIPS:")
