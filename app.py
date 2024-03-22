@@ -1,7 +1,10 @@
 import streamlit as st
 import streamlit_authenticator as stauth
 import pandas as pd
-import 
+
+cnx=st.connection("snowflake")
+learners_t = session.table("amazing.app.uni_users")
+st.dataframe(learners_t)
 
 st.header('Are You Snow-A-Mazing?')
 st.write('Welcome to the learn.snowflake.com Workshop Badge Management app!')
