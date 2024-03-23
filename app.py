@@ -47,8 +47,9 @@ with tab1:
         if badge_name_order == "First Middle/Nickname Family":
           name_test = givenname.capitalize() + " " + middlename.capitalize() + " " + familyname.upper()
           st.write("BADGE NAME WILL APPEAR AS:" + name_test)
-        else 
-          name_tst = familyname.upper() + " " + givename.capitalize
+        else: 
+          name_test = familyname.upper() + " " + givename.capitalize
+          st.write("BADGE NAME WILL APPEAR AS:" + name_test)
       
 
         submitted = st.form_submit_button("Update My Name for My Badge(s)")
