@@ -49,12 +49,12 @@ with tab1:
         else: 
           name_test = familyname.upper() + " " + givename.capitalize     
 
-      submitted = st.form_submit_button("Record My Name as Seen Above")
-        if submitted:
-            #session.call('amazing.app.UPDATE_BADGE_INFO_SP',firstname, middlename, lastname )
-            #st.success('Badge Info Updates', icon='🚀')
-            #st.experimental_rerun()
-        st.markdown("""---""")         
+    submitted = st.form_submit_button("Record My Name as Seen Above")
+    if submitted:
+    #session.call('amazing.app.UPDATE_BADGE_INFO_SP',firstname, middlename, lastname )
+    #st.success('Badge Info Updates', icon='🚀')
+    #st.experimental_rerun()
+    st.markdown("""---""")         
 
 with tab2:
     st.write("-----")
