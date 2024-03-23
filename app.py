@@ -35,7 +35,7 @@ st.write("Your learn.snowflake.com UNI_UUID is displayed on the page that linked
 st.write("-----")
 
 st.subheader("Your Badge: Your Name & Email")
-st.write("We need your name for your badge. We want it to look nice. We have rules. Please follow them."
+st.write("We need your name for your badge. We want it to look nice. We have rules. Please follow them.")
 
 with st.form("badge_name_and_email"):
     st.write("Confirm Your Name and Email for Any Badges That Might Be Issued")     
