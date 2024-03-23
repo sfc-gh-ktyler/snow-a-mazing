@@ -38,7 +38,8 @@ with tab1:
         givenname = st.text_input("Given Name")
         middlename = st.text_input('Middle Name (Optional)')
         familyname = st.text_input('Family Name')
-        cultural_order = st.checkbox('My culture displays my Family Name first. e.g. Japanese, Korean, Chinese')
+        cultural_order = st.checkbox('My culture displays my Family Name first. (e.g. Japanese, Korean, Chinese)')
+        badge_order = st.checkbox('I would like the order of my name to appear: FAMILY NAME, Middle Name, First Name')
         email = st.text_input('Email Address I want associated with my badge:')
 
         submitted = st.form_submit_button("Update Badge Details")
@@ -63,6 +64,16 @@ with tab3:
     st.write("Because of this, we have rules around what names can and should be used. If your entries fail, read over these rules until you figure out what went wrong.")
     st.write("-----")
 
+    st.write("What is a middle name?")
+    st.write("In US culture, a middle name is a name that appears on official documents but is often not used in more casual settings.")
+    st.write("Not every US citizen is given a middle name by their parents so it can be left blank. Do NOT put an X to represent the lack of a middle name. This looks ugly on a badge."
+    st.write("For badge purposes, a middle name can be used for a given middle name, or a nickname or an alternate script version of the family and given names.")
+    st.write("* NICKNAME Example: Harold \"Harry\" Simpson (common way to display a nickname in the US)")
+    st.write("* KOREAN Example: 전 Jeon Joon-kook 정국  (with Roman script used in Middle Name field. Hangule used in First and Family name fields)" )
+    st.write("* UKRANIAN Example: Volodymyr Володимир Зеленський Zelenskyy (with Cyrillic script used in Middle Name field, Roman script in First and Family Name fields.)")
+
+    
+  
     st.write("CHARACTER CASE RULES:")
     st.write("* Proper Mixed Case is required for given names and middle names. (Initial-letter capitalization)")
     st.write("* ALL UPPER CASE is allowed for family names.")
