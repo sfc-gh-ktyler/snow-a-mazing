@@ -46,18 +46,15 @@ with tab1:
       
         if badge_name_order == "First Middle/Nickname Family":
           name_test = givenname.capitalize() + " " + middlename.capitalize() + " " + familyname.upper()
-          st.write("BADGE NAME WILL APPEAR AS:" + name_test)
         else: 
-          name_test = familyname.upper() + " " + givename.capitalize
-          st.write("BADGE NAME WILL APPEAR AS:" + name_test)
-      
+          name_test = familyname.upper() + " " + givename.capitalize     
 
-        submitted = st.form_submit_button("Update My Name for My Badge(s)")
+        submitted = st.form_submit_button("Display my formatted Name:")
         if submitted:
-            
-            session.call('amazing.app.UPDATE_BADGE_INFO_SP',firstname, middlename, lastname )
-            st.success('Badge Info Updates', icon='🚀')
-            st.experimental_rerun()
+            st.write("BADGE NAME WILL APPEAR AS:" + name_test)
+            #session.call('amazing.app.UPDATE_BADGE_INFO_SP',firstname, middlename, lastname )
+            #st.success('Badge Info Updates', icon='🚀')
+            #st.experimental_rerun()
         st.markdown("""---""")         
 
 with tab2:
