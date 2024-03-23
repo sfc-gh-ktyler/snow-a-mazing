@@ -2,8 +2,6 @@ import streamlit as st
 import pandas as pd
 
 cnx=st.connection("snowflake")
-# Tabs
-tab1, tab2 = st.tabs(["Edit Badge Info", "Finding Info", "Name Entry Rules"])
                                               
 # Load the table as a dataframe using the Snowpark Session.
 @st.cache_data
@@ -29,6 +27,8 @@ if find_my_uni_record:
     else:
         st.write("There is no record of the UNI_ID/UUID combination you entered. Please double-check the info you entered, read the tips on the FINDING INFO tab, and try again") 
 
+# Tabs
+tab1, tab2, tab3 = st.tabs(["Edit Badge Info", "Finding Info", "Name Entry Rules"])
 with tab1:
     st.subheader("Your Badge: Your Name & Email")
     st.write("We need your name for your badge. We want it to look nice. We have rules. Please follow them.")
