@@ -66,7 +66,7 @@ with tab3:
 
     st.write("What is a middle name?")
     st.write("In US culture, a middle name is a name that appears on official documents but is often not used in more casual settings.")
-    st.write("Not every US citizen is given a middle name by their parents so it can be left blank. Do NOT put an X to represent the lack of a middle name. This looks ugly on a badge."
+    st.write("Not every US citizen is given a middle name by their parents so it can be left blank. Do NOT put an X to represent the lack of a middle name. This looks ugly on a badge.")
     st.write("For badge purposes, a middle name can be used for a given middle name, or a nickname or an alternate script version of the family and given names.")
     st.write("* NICKNAME Example: Harold \"Harry\" Simpson (common way to display a nickname in the US)")
     st.write("* KOREAN Example: 전 Jeon Joon-kook 정국  (with Roman script used in Middle Name field. Hangule used in First and Family name fields)" )
