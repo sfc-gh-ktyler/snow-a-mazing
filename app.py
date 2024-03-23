@@ -66,7 +66,7 @@ with tab3:
     st.write("CHARACTER CASE RULES:")
     st.write("* Proper Mixed Case is required for given names and middle names. (Initial-letter capitalization)")
     st.write("* ALL UPPER CASE is allowed for family names.")
-    st.write("* All lower case is allowed for in family names for nobiliary particles like van, van der, de, de la, etc. but the other parts of the family name should be mixed case."
+    st.write("* All lower case is allowed for in family names for nobiliary particles like van, van der, de, de la, etc. but the other parts of the family name should be mixed case.")
 
     st.write("NAME LENGTH RULES:")
     st.write("We recognize that East Asian names can sometimes be very few characters. Southeast Asian and Spanish names can sometimes be many, many characters.")
