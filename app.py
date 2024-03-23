@@ -55,12 +55,12 @@ with tab2:
     st.write("In order to make edits, you must enter the correct combination of your UNI ID and the UUID we have assigned to you.")
     st.write("Your UNI ID can be found in the top-right corner of the workshop page. It begins with 053 and is a string of letters and numbers.")
     st.write("Your learn.snowflake.com UNI_UUID is displayed on the page of the workshop that linked you to this app.")
-st.write("-----")
+  st.write("-----")
 
 with tab3:
     st.subheader("Our Very Nit-picky Name Rules")
-    st.write("We want your name to look nice on your badge(s). We want your badge(s) to accurately represent your name and securely represent your accomplishments."
-    st.write("Because of this, we have rules around what names can and should be used. If your entries fail, read over these rules until you figure out what went wrong."
+    st.write("We want your name to look nice on your badge(s). We want your badge(s) to accurately represent your name and securely represent your accomplishments.")
+    st.write("Because of this, we have rules around what names can and should be used. If your entries fail, read over these rules until you figure out what went wrong.")
     st.write("-----")
 
     st.write("CHARACTER CASE RULES:")
