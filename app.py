@@ -35,17 +35,26 @@ with tab1:
 
     with st.form("badge_name_and_email"):
         st.write("Confirm Your Name and Email for Any Badges That Might Be Issued")     
-        givenname = st.text_input("Given Name")
-        middlename = st.text_input('Middle Name (Optional)')
+        givenname = st.text_input("Given Name (Name used to greet you)")
+        middlename = st.text_input('Middle Name/Nickname/Alternate-Spelling (Optional)')
         familyname = st.text_input('Family Name')
-        cultural_order = st.checkbox('My culture displays my Family Name first. (e.g. Japanese, Korean, Chinese)')
-        badge_order = st.checkbox('I would like the order of my name to appear: FAMILY NAME, Middle Name, First Name')
-        email = st.text_input('Email Address I want associated with my badge:')
+        name_has_nobiliary = st.checkbox("My family name has a nobiliary particle that I want in lower-case (e.g. von, von de, von der, de, da, de la etc)")
+        badge_name_order = st.radio("Name Display Order You Prefer:",                            
+                               ["First Middle/Nickname Family","FAMILY Alternate-Spelling First", "FAMILY First Middle"]
+                               captions = ["Common in Anglo Traditions", "Good for including alternate script names", "Standard East Asian Romanized"]
+                               )
+      
+        if badge_name_order == "First Middle/Nickname Family":
+          name_test = givenname.capitalize() + " " + middlename.capitalize() + " " + familyname.upper()
+          st.write("BADGE NAME WILL APPEAR AS:" + name_test)
+        else 
+          name_tst = familyname.upper() + " " + givename.capitalize
+      
 
-        submitted = st.form_submit_button("Update Badge Details")
+        submitted = st.form_submit_button("Update My Name for My Badge(s)")
         if submitted:
             
-            session.call('amazing.app.UPDATE_BADGE_INFO_SP',firstname, middlename, lastname, email )
+            session.call('amazing.app.UPDATE_BADGE_INFO_SP',firstname, middlename, lastname )
             st.success('Badge Info Updates', icon='🚀')
             st.experimental_rerun()
         st.markdown("""---""")         
