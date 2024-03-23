@@ -40,7 +40,7 @@ with tab1:
         familyname = st.text_input('Family Name')
         name_has_nobiliary = st.checkbox("My family name has a nobiliary particle that I want in lower-case (e.g. von, von de, von der, de, da, de la etc)")
         badge_name_order = st.radio("Name Display Order You Prefer:",                            
-                               ["[Given] [Middle] [Family]","[FAMILY] [Alternate-Spelling] [Given]", "[FAMILY] [Given] [Middle]", "[Given] [Middle] [FAMILY]],
+                               ["[Given] [Middle] [Family]","[FAMILY] [Alternate-Spelling] [Given]", "[FAMILY] [Given] [Middle]", "[Given] [Middle] [FAMILY]"],
                                captions = ["Common in Anglo Traditions", "Good for including alternate script names", "East Asian Standard Order", "Common for French and Francophonic"]
                                )
       
@@ -53,11 +53,11 @@ with tab1:
     if show_my_name:
       st.write(name_test)
 
-    submitted = st.form_submit_button("Record My Name as Seen Above")
+    submitted = st.button("Record My Name as Seen Above")
     if submitted:
-    #session.call('amazing.app.UPDATE_BADGE_INFO_SP',firstname, middlename, lastname )
-    #st.success('Badge Info Updates', icon='🚀')
-    #st.experimental_rerun()
+      #session.call('amazing.app.UPDATE_BADGE_INFO_SP',firstname, middlename, lastname )
+      #st.success('Badge Info Updates', icon='🚀')
+      #st.experimental_rerun()
       st.markdown("""---""")         
 
 with tab2:
