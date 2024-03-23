@@ -40,7 +40,7 @@ with tab1:
         familyname = st.text_input('Family Name')
         name_has_nobiliary = st.checkbox("My family name has a nobiliary particle that I want in lower-case (e.g. von, von de, von der, de, da, de la etc)")
         badge_name_order = st.radio("Name Display Order You Prefer:",                            
-                               ["First Middle/Nickname Family","FAMILY Alternate-Spelling First", "FAMILY First Middle"]
+                               ["First Middle/Nickname Family","FAMILY Alternate-Spelling First", "FAMILY First Middle"],
                                captions = ["Common in Anglo Traditions", "Good for including alternate script names", "Standard East Asian Romanized"]
                                )
       
