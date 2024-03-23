@@ -54,7 +54,7 @@ with tab1:
     #session.call('amazing.app.UPDATE_BADGE_INFO_SP',firstname, middlename, lastname )
     #st.success('Badge Info Updates', icon='🚀')
     #st.experimental_rerun()
-    st.markdown("""---""")         
+      st.markdown("""---""")         
 
 with tab2:
     st.write("-----")
