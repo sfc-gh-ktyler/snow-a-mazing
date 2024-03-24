@@ -7,9 +7,9 @@ cnx=st.connection("snowflake")
 @st.cache_data
 def load_uni_users():
     session = cnx.session()
-    return session.table("UNI_USER_UUID").to_pandas()
+    return session.table("UNI_USER_BADGENAME_BADGEEMAIL").to_pandas()
 
-uni_users_df = load_uni_users()
+#uni_users_df = load_uni_users()
 
 st.header('Are You Snow-A-Mazing?')
 st.write('Welcome to the learn.snowflake.com Workshop Badge Management app!')
@@ -19,11 +19,16 @@ uni_uuid = st.text_input('Enter the secret UUID displayed on the DORA is Listeni
 find_my_uni_record = st.button("Find my UNI User Info")
 
 if find_my_uni_record:
-    this_user_df =  uni_users_df.query('UNI_ID=="' + uni_id + '" & UNI_UUID=="'+ uni_uuid +'" ')
+    
+    this_user_df =  session.table("UNI_USER_BADGENAME_BADGEEMAIL").query('UNI_ID=="' + uni_id + '" & UNI_UUID=="'+ uni_uuid +'" ')
     user_rows = this_user_df.shape[0]
     
     if user_rows>=1:
         st.dataframe(this_user_df)
+        session.view(
+        init_givenname = 
+        init_middlename =
+        init_familyname =
     else:
         st.write("There is no record of the UNI_ID/UUID combination you entered. Please double-check the info you entered, read the tips on the FINDING INFO tab, and try again") 
 
@@ -44,10 +49,14 @@ with tab1:
                                captions = ["Common in Anglo Traditions", "Good for including alternate script names", "East Asian Standard Order", "Common for French and Francophonic"]
                                )
       
-        if badge_name_order == "[Given] [Middle] [Family]":
-          name_test = givenname.capitalize() + " " + middlename.capitalize() + " " + familyname.upper()
-        else: 
-          name_test = familyname.upper() + " " + givename.capitalize  
+        if badge_name_order == "[Given] [Middle] [Family]" and name_has_nobiliary==True:
+          name_test = givenname.capitalize() + " " + middlename.capitalize() + " " + familyname
+        elif badge_name_order == "[Given] [Middle] [Family]" and name_has_nobiliary==False: 
+          name_test = givenname.upper() + " " + middlename.capitalize() + " " + familyname.capitalize() 
+        elif badge_name_order == "[FAMILY] [Alternate-Spelling] [Given]": 
+          name_test = familyname.upper + " " + middlename() + " " + givenname.capitalize() 
+        
+      
         show_my_name = st.form_submit_button("Display my name according to my entries above")
 
     if show_my_name:
