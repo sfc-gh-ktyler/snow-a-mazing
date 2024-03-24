@@ -33,7 +33,7 @@ with tab1:
 
     with st.form("badge_name_and_email"):
         st.write("Confirm Your Name for Any Badges That Might Be Issued")     
-        givenname = st.text_input("Given Name (Name used to greet you)")
+        givenname = st.text_input("Given Name (Name used to greet you)", init_givenname)
         middlename = st.text_input('Middle Name/Nickname/Alternate-Spelling (Optional)')
         familyname = st.text_input('Family Name')
         name_has_nobiliary = st.checkbox("My family name has a nobiliary particle that I want in lower-case (e.g. von, von de, von der, de, da, de la etc)")
