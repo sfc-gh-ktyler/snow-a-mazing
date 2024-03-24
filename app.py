@@ -19,7 +19,7 @@ if find_my_uni_record:
     
     if user_rows>=1:
         st.dataframe(user_results)
-        init_givenname = user_results['badge_given_name'].iloc[0]
+        init_givenname = user_results['BADGE_GIVEN_NAME'].iloc[0]
         init_middlename = ''
         init_familyname = ''
     else:
