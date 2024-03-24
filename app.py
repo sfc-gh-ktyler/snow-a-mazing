@@ -21,12 +21,12 @@ find_my_uni_record = st.button("Find my UNI User Info")
 
 if find_my_uni_record:
     
-    this_user_sql =  "select * from UNI_USER_BADGENAME_BADGEEMAIL where UNI_ID='" + uni_id + "' and UNI_UUID='"+ uni_uuid +"';"
+    this_user_sql =  "select badge_given_name, badge_middle_name, badge_family_name, badge_email from UNI_USER_BADGENAME_BADGEEMAIL where UNI_ID='" + uni_id + "' and UNI_UUID='"+ uni_uuid +"';"
     this_user_df = session.sql(this_user_sql)
     user_results = this_user_df.to_pandas()
 
     st.dataframe(user_results)                            
-    user_rows = this_user_df.shape[0]
+    user_rows = user_results.shape[0]
     
     if user_rows>=1:
         st.dataframe(this_user_df)
