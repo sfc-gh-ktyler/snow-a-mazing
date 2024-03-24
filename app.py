@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-cnx=st.connection("snowflake")kl
+cnx=st.connection("snowflake")
 session = cnx.session()
 
 st.header('Are You Snow-A-Mazing?')
