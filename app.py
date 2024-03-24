@@ -26,9 +26,9 @@ if find_my_uni_record:
     if user_rows>=1:
         st.dataframe(this_user_df)
         session.view(
-        init_givenname = 
-        init_middlename =
-        init_familyname =
+        init_givenname = ''
+        init_middlename = ''
+        init_familyname = ''
     else:
         st.write("There is no record of the UNI_ID/UUID combination you entered. Please double-check the info you entered, read the tips on the FINDING INFO tab, and try again") 
 
