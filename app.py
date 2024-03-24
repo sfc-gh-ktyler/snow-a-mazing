@@ -21,7 +21,8 @@ find_my_uni_record = st.button("Find my UNI User Info")
 
 if find_my_uni_record:
     
-    this_user_df =  session.table("UNI_USER_BADGENAME_BADGEEMAIL").query('UNI_ID=="' + uni_id + '" & UNI_UUID=="'+ uni_uuid +'" ')
+    this_user_df =  session.sql("select * from UNI_USER_BADGENAME_BADGEEMAIL where UNI_ID="' + uni_id + '" and UNI_UUID="'+ uni_uuid +'" ')
+    st.write(this_user_df)                            
     user_rows = this_user_df.shape[0]
     
     if user_rows>=1:
