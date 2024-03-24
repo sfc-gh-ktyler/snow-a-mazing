@@ -38,12 +38,12 @@ tab1, tab2, tab3 = st.tabs(["Your Name", "Finding Info", "Name Entry Rules"])
 with tab1:
     st.subheader("Your Name for Your Badge(s)")
     st.write("We need your name for your badge. We want it to look nice so, we have rules. Please follow them.")
-    st.write(init_givenname)
+    st.write(st.session_state.given_name)
     with st.form("badge_name_and_email"):
         st.write("Confirm Your Name for Any Badges That Might Be Issued")     
-        givenname = st.text_input("Given Name (Name used to greet you)", st.session_state.given_name)
-        middlename = st.text_input('Middle Name/Nickname/Alternate-Spelling (Optional)', st.session_name.middle_name)
-        familyname = st.text_input('Family Name', st.session_name.family_name)
+        givenname = st.text_input("Given Name (Name used to greet you)")
+        middlename = st.text_input('Middle Name/Nickname/Alternate-Spelling (Optional)')
+        familyname = st.text_input('Family Name')
         name_has_nobiliary = st.checkbox("My family name has a nobiliary particle that I want in lower-case (e.g. von, von de, von der, de, da, de la etc)")
         badge_name_order = st.radio("Name Display Order You Prefer:",                            
                                ["[Given] [Middle] [Family]","[FAMILY] [Alternate-Spelling] [Given]", "[FAMILY] [Given] [Middle]", "[Given] [Middle] [FAMILY]"],
