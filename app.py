@@ -18,18 +18,24 @@ if find_my_uni_record:
     user_rows = user_results.shape[0]
     
     if user_rows>=1:
-        st.dataframe(user_results)
+        # st.dataframe(user_results)
+        
         if 'uni_id' not in st.session_state:
             st.session_state['uni_id'] = uni_id
+            
         init_givenname = user_results['BADGE_GIVEN_NAME'].iloc[0]
         if 'given_name' not in st.session_state:
             st.session_state['given_name'] = init_givenname
+        
         init_middlename = user_results['BADGE_MIDDLE_NAME'].iloc[0]
         if 'middle_name' not in st.session_state:
             st.session_state['middle_name'] = init_middlename
+        
         init_familyname = user_results['BADGE_FAMILY_NAME'].iloc[0]
         if 'family_name' not in st.session_state:
             st.session_state['family_name'] = init_familyname
+
+        st.write(st.session_state.given_name)
     else:
         st.write("There is no record of the UNI_ID/UUID combination you entered. Please double-check the info you entered, read the tips on the FINDING INFO tab, and try again") 
 
