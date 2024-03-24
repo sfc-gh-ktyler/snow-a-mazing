@@ -19,12 +19,17 @@ if find_my_uni_record:
     
     if user_rows>=1:
         st.dataframe(user_results)
+        if 'uni_id' not in st.session_state:
+            st.session_state['uni_id'] = uni_id
         init_givenname = user_results['BADGE_GIVEN_NAME'].iloc[0]
-        st.write(init_givenname)
+        if 'given_name' not in st.session_state:
+            st.session_state['given_name'] = init_givenname
         init_middlename = user_results['BADGE_MIDDLE_NAME'].iloc[0]
-        st.write(init_middlename)
+        if 'middle_name' not in st.session_state:
+            st.session_state['middle_name'] = init_middlename
         init_familyname = user_results['BADGE_FAMILY_NAME'].iloc[0]
-        st.write(init_familyname)
+        if 'family_name' not in st.session_state:
+            st.session_state['family_name'] = init_familyname
     else:
         st.write("There is no record of the UNI_ID/UUID combination you entered. Please double-check the info you entered, read the tips on the FINDING INFO tab, and try again") 
 
@@ -36,9 +41,9 @@ with tab1:
     st.write(init_givenname)
     with st.form("badge_name_and_email"):
         st.write("Confirm Your Name for Any Badges That Might Be Issued")     
-        givenname = st.text_input("Given Name (Name used to greet you)")
-        middlename = st.text_input('Middle Name/Nickname/Alternate-Spelling (Optional)')
-        familyname = st.text_input('Family Name')
+        givenname = st.text_input("Given Name (Name used to greet you)", st.session_state.given_name)
+        middlename = st.text_input('Middle Name/Nickname/Alternate-Spelling (Optional)', st.session_name.middle_name)
+        familyname = st.text_input('Family Name', st.session_name.family_name)
         name_has_nobiliary = st.checkbox("My family name has a nobiliary particle that I want in lower-case (e.g. von, von de, von der, de, da, de la etc)")
         badge_name_order = st.radio("Name Display Order You Prefer:",                            
                                ["[Given] [Middle] [Family]","[FAMILY] [Alternate-Spelling] [Given]", "[FAMILY] [Given] [Middle]", "[Given] [Middle] [FAMILY]"],
