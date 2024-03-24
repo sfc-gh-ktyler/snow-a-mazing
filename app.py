@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-cnx=st.connection("snowflake")
+cnx=st.connection("snowflake")kl
 session = cnx.session()
 
 st.header('Are You Snow-A-Mazing?')
@@ -33,7 +33,7 @@ tab1, tab2, tab3 = st.tabs(["Your Name", "Finding Info", "Name Entry Rules"])
 with tab1:
     st.subheader("Your Name for Your Badge(s)")
     st.write("We need your name for your badge. We want it to look nice so, we have rules. Please follow them.")
-
+    st.write(init_givenname)
     with st.form("badge_name_and_email"):
         st.write("Confirm Your Name for Any Badges That Might Be Issued")     
         givenname = st.text_input("Given Name (Name used to greet you)")
