@@ -25,7 +25,6 @@ if find_my_uni_record:
     
     if user_rows>=1:
         st.dataframe(this_user_df)
-        session.view(
         init_givenname = ''
         init_middlename = ''
         init_familyname = ''
