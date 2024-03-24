@@ -30,7 +30,7 @@ if find_my_uni_record:
     
     if user_rows>=1:
         st.dataframe(this_user_df)
-        init_givenname = ''
+        init_givenname = user_results[0]
         init_middlename = ''
         init_familyname = ''
     else:
