@@ -21,8 +21,10 @@ if find_my_uni_record:
         st.dataframe(user_results)
         init_givenname = user_results['BADGE_GIVEN_NAME'].iloc[0]
         st.write(init_givenname)
-        init_middlename = ''
-        init_familyname = ''
+        init_middlename = user_results['BADGE_MIDDLE_NAME'].iloc[0]
+        st.write(init_middlename)
+        init_familyname = user_results['BADGE_FAMILY_NAME'].iloc[0]
+        st.write(init_familyname)
     else:
         st.write("There is no record of the UNI_ID/UUID combination you entered. Please double-check the info you entered, read the tips on the FINDING INFO tab, and try again") 
 
