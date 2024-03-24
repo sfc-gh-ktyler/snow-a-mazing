@@ -4,7 +4,6 @@ import pandas as pd
 cnx=st.connection("snowflake")
 session = cnx.session()
 
-@st.cache_data
 st.header('Are You Snow-A-Mazing?')
 st.write('Welcome to the learn.snowflake.com Workshop Badge Management app!')
 
