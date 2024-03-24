@@ -4,14 +4,7 @@ import pandas as pd
 cnx=st.connection("snowflake")
 session = cnx.session()
 
-# Load the table as a dataframe using the Snowpark Session.
 @st.cache_data
-def load_uni_users():
-    session = cnx.session()
-    return session.table("UNI_USER_BADGENAME_BADGEEMAIL").to_pandas()
-
-#uni_users_df = load_uni_users()
-
 st.header('Are You Snow-A-Mazing?')
 st.write('Welcome to the learn.snowflake.com Workshop Badge Management app!')
 
@@ -20,16 +13,13 @@ uni_uuid = st.text_input('Enter the secret UUID displayed on the DORA is Listeni
 find_my_uni_record = st.button("Find my UNI User Info")
 
 if find_my_uni_record:
-    
     this_user_sql =  "select badge_given_name, badge_middle_name, badge_family_name, badge_email from UNI_USER_BADGENAME_BADGEEMAIL where UNI_ID='" + uni_id + "' and UNI_UUID='"+ uni_uuid +"'"
     this_user_df = session.sql(this_user_sql)
-    user_results = this_user_df.to_pandas()
-
-    st.dataframe(user_results)                            
+    user_results = this_user_df.to_pandas()                          
     user_rows = user_results.shape[0]
     
     if user_rows>=1:
-        st.dataframe(this_user_df)
+        st.dataframe(user_results)
         init_givenname = user_results[0]
         init_middlename = ''
         init_familyname = ''
