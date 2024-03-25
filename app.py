@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 
+# Session Initializations
 cnx=st.connection("snowflake")
 session = cnx.session()
 if 'auth_status' not in st.session_state:
@@ -8,8 +9,10 @@ if 'auth_status' not in st.session_state:
 if 'display_format' not in st.session_state:
     st.session_state['display_format'] = 1
 
+# Temp for debugging
 st.session_state
 
+# Page Header
 st.header('Are You Snow-A-Mazing?')
 st.write('Welcome to the learn.snowflake.com Workshop Badge Management app!')
 
@@ -35,26 +38,13 @@ if find_my_uni_record:
     
     if user_rows>=1:
         st.session_state['auth_status'] = 'authed'
-        if 'uni_id' not in st.session_state:
-            st.session_state['uni_id'] = uni_id
-            
-        if 'given_name' not in st.session_state:
-            st.session_state['given_name'] = user_results['BADGE_GIVEN_NAME'].iloc[0]
-        
-        if 'middle_name' not in st.session_state:
-            st.session_state['middle_name'] = user_results['BADGE_MIDDLE_NAME'].iloc[0]
-        
-        if 'family_name' not in st.session_state:
-            st.session_state['family_name'] = user_results['BADGE_FAMILY_NAME'].iloc[0]
-            
-        if 'badge_email' not in st.session_state:
-            st.session_state['badge_email'] = user_results['BADGE_EMAIL'].iloc[0]
-            
-        if 'display_format' not in st.session_state:
-            st.session_state['display_format'] = user_results['DISPLAY_FORMAT'].iloc[0]    
-
-        if 'display_name' not in st.session_state:
-            st.session_state['display_name'] = user_results['DISPLAY_NAME'].iloc[0]
+        st.session_state['uni_id'] = uni_id
+        st.session_state['given_name'] = user_results['BADGE_GIVEN_NAME'].iloc[0]
+        st.session_state['middle_name'] = user_results['BADGE_MIDDLE_NAME'].iloc[0]
+        st.session_state['family_name'] = user_results['BADGE_FAMILY_NAME'].iloc[0]
+        st.session_state['badge_email'] = user_results['BADGE_EMAIL'].iloc[0]
+        st.session_state['display_format'] = user_results['DISPLAY_FORMAT'].iloc[0]    
+        st.session_state['display_name'] = user_results['DISPLAY_NAME'].iloc[0]
     else:
         st.markdown(":red[There is no record of the UNI_ID/UUID combination you entered. Please double-check the info you entered, read the tips on the FINDING INFO tab, and try again]") 
 
