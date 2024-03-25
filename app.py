@@ -49,7 +49,7 @@ if find_my_uni_record:
         st.markdown(":red[There is no record of the UNI_ID/UUID combination you entered. Please double-check the info you entered, read the tips on the FINDING INFO tab, and try again]") 
 
 ###################################### Tabs
-tab1, tab2, tab3, tab4 = st.tabs(["View Your Name and Email", "Edit Your Name and Email","Finding Your Information", "Name Entry Rules"])
+tab1, tab2, tab3, tab4 = st.tabs(["View Details", "Edit Details","Choose Display", "FAQs"])
 
 with tab1:
     st.subheader("Your Name and Email - Currently Stored in Our System")
@@ -81,10 +81,14 @@ with tab2:
             # st.write('We got this far.')
             st.success('Badge Name & Email Updated', icon='🚀')
             # st.rerun()
-            st.markdown("""---""")  
+
     else:
         st.write("Please sign in using your UNI_ID and UUID in the section above.")  
-        
+
+    with tab3:
+    st.subheader("Format the Display of Your Name on Your Badge(s)")
+
+    if st.session_state.auth_status == 'authed':
         with st.form("display_formatting"):
             display_option_1 = edited_given.capitalize() + " " + edited_middle.capitalize() + " " + edited_family.capitalize() #lazy do it for me
             display_option_2 = edited_given.capitalize() + " " + edited_middle.capitalize() + " " + edited_family #european w nobiliary
@@ -125,13 +129,12 @@ with tab2:
             st.success('Badge Display Name Updated', icon='🚀')
 
 ##########################################
-with tab3:
+with tab4:
     st.subheader("Finding Your Login Information:")
     st.write("In order to make edits, you must enter the correct combination of your UNI ID and the UUID we have assigned to you.")
     st.write("Your UNI ID can be found in the top-right corner of the workshop page. It begins with 053 and is a string of letters and numbers.")
     st.write("Your learn.snowflake.com UNI_UUID is displayed on the page of the workshop that linked you to this app.")
 
-with tab4:
     st.subheader("Our Very Nit-picky Name Rules")
     st.write("We want your name to look nice on your badge(s). We want your badge(s) to accurately represent your name and securely represent your accomplishments.")
     st.write("Because of this, we have rules around what names can and should be used. If your entries fail, read over these rules until you figure out what went wrong.")
