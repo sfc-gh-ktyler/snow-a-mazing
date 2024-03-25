@@ -78,14 +78,12 @@ with tab2:
 
         if submit_edits:
             session.call('AMAZING.APP.UPDATE_BADGENAME_BADGEEMAIL_SP',uni_id, uni_uuid, edited_given, edited_middle, edited_family, edited_email)
-            # st.write('We got this far.')
             st.success('Badge Name & Email Updated', icon='🚀')
-            # st.rerun()
 
-    else:
+    else: # not authed
         st.write("Please sign in using your UNI_ID and UUID in the section above.")  
-
-    with tab3:
+#######################################
+with tab3:
     st.subheader("Format the Display of Your Name on Your Badge(s)")
 
     if st.session_state.auth_status == 'authed':
