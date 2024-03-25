@@ -18,7 +18,7 @@ uni_uuid = st.text_input('Enter the secret UUID displayed on the DORA is Listeni
 find_my_uni_record = st.button("Find my UNI User Info")
 
 if find_my_uni_record:
-    st.session_state['uni_id'] = 'not_authed'
+    st.session_state['auth_status'] = 'not_authed'
     this_user_sql =  "select badge_given_name, badge_middle_name, badge_family_name, badge_email, display_format, coalesce(display_name,'<no display name generated>') as display_name from UNI_USER_BADGENAME_BADGEEMAIL where UNI_ID=trim('" + uni_id + "') and UNI_UUID=trim('"+ uni_uuid +"')"
     this_user_df = session.sql(this_user_sql)
     user_results = this_user_df.to_pandas()                          
