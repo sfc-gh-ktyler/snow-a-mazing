@@ -133,7 +133,7 @@ with tab4:
     if st.session_state.auth_status == 'authed':
         user_trials_sql =  "select * from AMAZING.APP.USER_ACCOUNT_INFO_BY_COURSE where UNI_ID=trim('" + uni_id + "') and UNI_UUID=trim('"+ uni_uuid +"')"
         trials_df = session.sql(user_trials_sql)
-        trials_results = this_user_df.to_pandas()
+        trials_results = trials_df.to_pandas()
         
         with st.form("workshops"):          
             badge_options = ('Badge 1: DWW', 'Badge 2: CMCW', 'Badge 3: DABW', 'Badge 4: DLKW', 'Badge 5: DNGW')
