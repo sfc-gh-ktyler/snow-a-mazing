@@ -78,8 +78,9 @@ with tab2:
 
         if submit_edits:
             # session.call('AMAZING.APP.UPDATE_BADGENAME_BADGEEMAIL_SP',uni_id, uni_uuid, edited_given, edited_middle, edited_family, edited_email)
-            st.success('Badge Info Updates', icon='🚀')
-            st.rerun()
+            st.write('We got this far.')
+            # st.success('Badge Info Updates', icon='🚀')
+            # st.rerun()
             st.markdown("""---""")  
         
             with st.form("display_formatting"):
