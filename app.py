@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import streamlit.components.v1 as components
 
 cnx=st.connection("snowflake")
 session = cnx.session()
@@ -54,26 +55,59 @@ with tab1:
                                ["[Given] [Middle] [Family]","[FAMILY] [Alternate-Spelling] [Given]", "[FAMILY] [Given] [Middle]", "[Given] [Middle] [FAMILY]"],
                                captions = ["Common in Anglo Traditions", "Good for including alternate script names", "East Asian Standard Order", "Common for French and Francophonic"]
                                )
-        submit_edits = st.form_submit_button("Save My Name")
+        submit_edits = st.form_submit_button("Show My Badge Name")
         
         if badge_name_order == "[Given] [Middle] [Family]" and name_has_nobiliary==True:
             name_test = edited_given.capitalize() + " " + edited_middle.capitalize() + " " + edited_family
-            st.subheader(name_test)
         elif badge_name_order == "[Given] [Middle] [Family]" and name_has_nobiliary==False: 
             name_test = edited_given.capitalize() + " " + edited_middle.capitalize() + " " + edited_family.capitalize() 
-            st.subheader(name_test)
         elif badge_name_order == "[FAMILY] [Alternate-Spelling] [Given]": 
             name_test = edited_family.upper() + " " + edited_middle + " " + edited_given.capitalize() 
-            st.subheader(name_test)
         elif badge_name_order == "[FAMILY] [Given] [Middle]": 
             name_test = edited_family.upper() + " " + edited_given.capitalize() + " " +  edited_middle.capitalize() 
-            st.subheader(name_test)
         elif badge_name_order == "[Given] [Middle] [FAMILY]":
             name_test = edited_given.capitalize() + " " +  edited_middle.capitalize() + " " + edited_family.upper()
-            st.subheader(name_test)
         else: 
             st.write('Choose a format for your name')
-            
+
+        components.html(
+    """
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <div id="accordion">
+      <div class="card">
+        <div class="card-header" id="headingOne">
+          <h5 class="mb-0">
+            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Collapsible Group Item #1
+            </button>
+          </h5>
+        </div>
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+          <div class="card-body">
+            Collapsible Group Item #1 content
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" id="headingTwo">
+          <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            Collapsible Group Item #2
+            </button>
+          </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+          <div class="card-body">
+            Collapsible Group Item #2 content
+          </div>
+        </div>
+      </div>
+    </div>
+    """,
+    height=600,
+)   
 
 
 
