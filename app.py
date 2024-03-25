@@ -48,7 +48,7 @@ with tab1:
         edited_given = st.text_input("Given Name (Name used to greet you)", st.session_state.given_name)
         edited_middle = st.text_input('Middle Name/Nickname/Alternate-Spelling (Optional)', st.session_state.middle_name)
         edited_family = st.text_input('Family Name', st.session_state.family_name)
-        name_has_nobiliary = st.checkbox("My family name has a nobiliary particle that shoule remain lower-case (e.g. von, von de, von der, de, da, de la etc)")
+        name_has_nobiliary = st.checkbox("My family name has a nobiliary particle. No changes should be made to lower-case parts of my last name (e.g. von, von de, von der, de, da, de la etc)")
         
         badge_name_order = st.radio("Name Display Order You Prefer:",                            
                                ["[Given] [Middle] [Family]","[FAMILY] [Alternate-Spelling] [Given]", "[FAMILY] [Given] [Middle]", "[Given] [Middle] [FAMILY]"],
