@@ -77,7 +77,7 @@ with tab2:
             submit_edits = st.form_submit_button("Update My Badge Name & Badge Email")  
 
         if submit_edits:
-            # session.call('AMAZING.APP.UPDATE_BADGENAME_BADGEEMAIL_SP',uni_id, uni_uuid, edited_given, edited_middle, edited_family, edited_email)
+            session.call('AMAZING.APP.UPDATE_BADGENAME_BADGEEMAIL_SP',uni_id, uni_uuid, edited_given, edited_middle, edited_family, edited_email)
             st.write('We got this far.')
             # st.success('Badge Info Updates', icon='🚀')
             # st.rerun()
@@ -114,8 +114,6 @@ with tab2:
                     
                 else: 
                     st.write('Choose a format for your name')
-                
-               
        
     else:
         st.write("Please sign in using your UNI_ID and UUID in the section above.")
