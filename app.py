@@ -18,7 +18,7 @@ uni_uuid = st.text_input('Enter the secret UUID displayed on the DORA is Listeni
 find_my_uni_record = st.button("Find my UNI User Info")
 
 if find_my_uni_record:
-    this_user_sql =  "select badge_given_name, badge_middle_name, badge_family_name, badge_email, has_nobiliary, display_format, coalesce(display_name,'<no display name generated>') as display_name from UNI_USER_BADGENAME_BADGEEMAIL where UNI_ID='" + uni_id + "' and UNI_UUID='"+ uni_uuid +"'"
+    this_user_sql =  "select badge_given_name, badge_middle_name, badge_family_name, badge_email, display_format, coalesce(display_name,'<no display name generated>') as display_name from UNI_USER_BADGENAME_BADGEEMAIL where UNI_ID='" + uni_id + "' and UNI_UUID='"+ uni_uuid +"'"
     this_user_df = session.sql(this_user_sql)
     user_results = this_user_df.to_pandas()                          
     user_rows = user_results.shape[0]
@@ -39,9 +39,6 @@ if find_my_uni_record:
             
         if 'badge_email' not in st.session_state:
             st.session_state['badge_email'] = user_results['BADGE_EMAIL'].iloc[0]
-
-        if 'badge_email' not in st.session_state:
-            st.session_state['nobiliary'] = user_results['HAS_NOBILIARY'].iloc[0]
             
         if 'display_format' not in st.session_state:
             st.session_state['display_format'] = user_results['DISPLAY_FORMAT'].iloc[0]    
@@ -66,7 +63,7 @@ with tab1:
         st.markdown("*If your display name has not been generated, or you would like to make changes to information, go to the next tab and edit your information*")
     else:
         st.write("Please sign in using your UNI_ID and UUID in the section above.")
-
+###################################
 with tab2:
     st.subheader("Edit or Confirm Your Name for Your Badge(s)")
 
@@ -80,7 +77,7 @@ with tab2:
             submit_edits = st.form_submit_button("Update My Badge Name & Badge Email")  
 
         if submit_edits:
-            session.call('AMAZING.APP.UPDATE_BADGENAME_BADGEEMAIL_SP',uni_id, uni_uuid, edited_given, edited_middle, edited_family, edited_email, name_has_nobiliary, display_format, display_name )
+            session.call('AMAZING.APP.UPDATE_BADGENAME_BADGEEMAIL_SP',uni_id, uni_uuid, edited_given, edited_middle, edited_family, edited_email)
             st.success('Badge Info Updates', icon='🚀')
             st.experimental_rerun()
             st.markdown("""---""")  
