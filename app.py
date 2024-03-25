@@ -78,16 +78,16 @@ with tab2:
                     st.markdown("Your name will appear on your badge as: **" + name_test + "**")
                 elif badge_name_order == "[Given] [Middle] [Family]" and name_has_nobiliary==False: 
                     name_test = edited_given.capitalize() + " " + edited_middle.capitalize() + " " + edited_family.capitalize() 
-                    st.markdown("Your name will appear on your badge as: " + name_test)
+                    st.markdown("Your name will appear on your badge as: **" + name_test + "**")
                 elif badge_name_order == "[FAMILY] [Alternate-Spelling] [Given]": 
                     name_test = edited_family.upper() + " " + edited_middle + " " + edited_given.capitalize() 
-                    st.markdown("Your name will appear on your badge as: " + name_test)
+                    st.markdown("Your name will appear on your badge as: **" + name_test + "**")
                 elif badge_name_order == "[FAMILY] [Given] [Middle]": 
                     name_test = edited_family.upper() + " " + edited_given.capitalize() + " " +  edited_middle.capitalize() 
-                    st.markdown("Your name will appear on your badge as: " + name_test)
+                    st.markdown("Your name will appear on your badge as: **" + name_test + "**")
                 elif badge_name_order == "[Given] [Middle] [FAMILY]":
                     name_test = edited_given.capitalize() + " " +  edited_middle.capitalize() + " " + edited_family.upper()
-                    st.markdown("Your name will appear on your badge as: " + name_test)
+                    st.markdown("Your name will appear on your badge as: **" + name_test + "**")
                 else: 
                     st.write('Choose a format for your name')
                
