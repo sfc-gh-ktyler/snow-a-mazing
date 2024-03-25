@@ -63,13 +63,13 @@ with tab1:
             name_test = edited_given.capitalize() + " " + edited_middle.capitalize() + " " + edited_family.capitalize() 
             st.subheader(name_test)
         elif badge_name_order == "[FAMILY] [Alternate-Spelling] [Given]": 
-            name_test = edited_family.upper + " " + edited_middle + " " + edited_given.capitalize() 
+            name_test = edited_family.upper() + " " + edited_middle + " " + edited_given.capitalize() 
             st.subheader(name_test)
         elif badge_name_order == "[FAMILY] [Given] [Middle]": 
-            name_test = edited_family.upper + " " + edited_given.capitalize() + " " +  edited_middle.capitalize() 
+            name_test = edited_family.upper() + " " + edited_given.capitalize() + " " +  edited_middle.capitalize() 
             st.subheader(name_test)
         elif badge_name_order == "[Given] [Middle] [FAMILY]":
-            name_test = edited_given.capitalize() + " " +  edited_middle.capitalize() + " " + edited_family.upper
+            name_test = edited_given.capitalize() + " " +  edited_middle.capitalize() + " " + edited_family.upper()
             st.subheader(name_test)
         else: 
             st.write('Choose a format for your name')
