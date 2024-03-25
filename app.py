@@ -3,6 +3,9 @@ import pandas as pd
 
 cnx=st.connection("snowflake")
 session = cnx.session()
+if 'auth_status' not in st.session_state:
+    st.session_state['auth_status'] = 'not_authed'
+
 st.session_state
 
 st.header('Are You Snow-A-Mazing?')
@@ -17,8 +20,9 @@ if find_my_uni_record:
     this_user_df = session.sql(this_user_sql)
     user_results = this_user_df.to_pandas()                          
     user_rows = user_results.shape[0]
-    
+        
     if user_rows>=1:
+        st.session_state['auth_status'] = 'authed'
         if 'uni_id' not in st.session_state:
             st.session_state['uni_id'] = uni_id
             
@@ -37,56 +41,55 @@ if find_my_uni_record:
         st.write("There is no record of the UNI_ID/UUID combination you entered. Please double-check the info you entered, read the tips on the FINDING INFO tab, and try again") 
 
 # Tabs
-tab1, tab2, tab3, tab4 = st.tabs(["View Your Name and Email", "Edit Your Name and Email", "Name Entry Rules"])
+tab1, tab2, tab3, tab4 = st.tabs(["View Your Name and Email", "Edit Your Name and Email","Finding Your Information", "Name Entry Rules"])
 
 with tab1:
-    st.subheader("Your Name and Email - Currenly Stored in Our System")
-    st.write("GIVEN NAME: " + st.session_state.given_name)
-    st.write("MIDDLE/ALTERNATE NAME: "+ st.session_state.middle_name) 
-    st.write("FAMILY NAME: " + st.session_state.family_name)
-    st.write("EMAIL:" + st.session_state.badge_email)
+    st.subheader("Your Name and Email - Currently Stored in Our System")
+    if st.session_state.auth_status = 'authed':
+        st.write("GIVEN NAME: " + st.session_state.given_name)
+        st.write("MIDDLE/ALTERNATE NAME: "+ st.session_state.middle_name) 
+        st.write("FAMILY NAME: " + st.session_state.family_name)
+        st.write("EMAIL:" + st.session_state.badge_email)
+    else:
+        st.write("Please sign in using your UNI_ID and UUID in the section above.")
 
 with tab2:
     st.subheader("Edit or Confirm Your Name for Your Badge(s)")
     st.write("Please format your name so that it will look nice on your badge.")
-    
-    with st.form("badge_name_and_email"):
-        st.write("Confirm Your Name for Any Badges That Might Be Issued")     
-        edited_given = st.text_input("Given Name (Name used to greet you)", st.session_state.given_name)
-        edited_middle = st.text_input('Middle Name/Nickname/Alternate-Spelling (Optional)', st.session_state.middle_name)
-        edited_family = st.text_input('Family Name', st.session_state.family_name)
-        name_has_nobiliary = st.checkbox("My family name has a nobiliary particle. No changes should be made to lower-case parts of my last name (e.g. von, von de, von der, de, da, de la etc)")
+    if st.session_state.auth_status = 'authed':
+        with st.form("badge_name_and_email"):
+            st.write("Confirm Your Name for Any Badges That Might Be Issued")     
+            edited_given = st.text_input("Given Name (Name used to greet you)", st.session_state.given_name)
+            edited_middle = st.text_input('Middle Name/Nickname/Alternate-Spelling (Optional)', st.session_state.middle_name)
+            edited_family = st.text_input('Family Name', st.session_state.family_name)
+            name_has_nobiliary = st.checkbox("My family name has a nobiliary particle. No changes should be made to lower-case parts of my last name (e.g. von, von de, von der, de, da, de la etc)")
+            
+            badge_name_order = st.radio("Name Display Order You Prefer:",                            
+                                   ["[Given] [Middle] [Family]","[FAMILY] [Alternate-Spelling] [Given]", "[FAMILY] [Given] [Middle]", "[Given] [Middle] [FAMILY]"],
+                                   captions = ["Common in Anglo Traditions", "Good for including alternate script names", "East Asian Standard Order", "Common for French and Francophonic"]
+                                   )
+            submit_edits = st.form_submit_button("Show My Badge Name")
         
-        badge_name_order = st.radio("Name Display Order You Prefer:",                            
-                               ["[Given] [Middle] [Family]","[FAMILY] [Alternate-Spelling] [Given]", "[FAMILY] [Given] [Middle]", "[Given] [Middle] [FAMILY]"],
-                               captions = ["Common in Anglo Traditions", "Good for including alternate script names", "East Asian Standard Order", "Common for French and Francophonic"]
-                               )
-        submit_edits = st.form_submit_button("Show My Badge Name")
-        
-        if badge_name_order == "[Given] [Middle] [Family]" and name_has_nobiliary==True:
-            name_test = edited_given.capitalize() + " " + edited_middle.capitalize() + " " + edited_family
-        elif badge_name_order == "[Given] [Middle] [Family]" and name_has_nobiliary==False: 
-            name_test = edited_given.capitalize() + " " + edited_middle.capitalize() + " " + edited_family.capitalize() 
-        elif badge_name_order == "[FAMILY] [Alternate-Spelling] [Given]": 
-            name_test = edited_family.upper() + " " + edited_middle + " " + edited_given.capitalize() 
-        elif badge_name_order == "[FAMILY] [Given] [Middle]": 
-            name_test = edited_family.upper() + " " + edited_given.capitalize() + " " +  edited_middle.capitalize() 
-        elif badge_name_order == "[Given] [Middle] [FAMILY]":
-            name_test = edited_given.capitalize() + " " +  edited_middle.capitalize() + " " + edited_family.upper()
-        else: 
-            st.write('Choose a format for your name')
-
-        components.html("""<div style]'color: red;'> Something on a yellow bg </div>""")
-        
-        
-
-
-
-    if submit_edits:
-      #session.call('amazing.app.UPDATE_BADGE_INFO_SP',firstname, middlename, lastname )
-      #st.success('Badge Info Updates', icon='🚀')
-      #st.experimental_rerun()
-      st.markdown("""---""")         
+            if badge_name_order == "[Given] [Middle] [Family]" and name_has_nobiliary==True:
+                name_test = edited_given.capitalize() + " " + edited_middle.capitalize() + " " + edited_family
+            elif badge_name_order == "[Given] [Middle] [Family]" and name_has_nobiliary==False: 
+                name_test = edited_given.capitalize() + " " + edited_middle.capitalize() + " " + edited_family.capitalize() 
+            elif badge_name_order == "[FAMILY] [Alternate-Spelling] [Given]": 
+                name_test = edited_family.upper() + " " + edited_middle + " " + edited_given.capitalize() 
+            elif badge_name_order == "[FAMILY] [Given] [Middle]": 
+                name_test = edited_family.upper() + " " + edited_given.capitalize() + " " +  edited_middle.capitalize() 
+            elif badge_name_order == "[Given] [Middle] [FAMILY]":
+                name_test = edited_given.capitalize() + " " +  edited_middle.capitalize() + " " + edited_family.upper()
+            else: 
+                st.write('Choose a format for your name')
+               
+        if submit_edits:
+            #session.call('amazing.app.UPDATE_BADGE_INFO_SP',firstname, middlename, lastname )
+            #st.success('Badge Info Updates', icon='🚀')
+            #st.experimental_rerun()
+            st.markdown("""---""")         
+    else:
+        st.write("Please sign in using your UNI_ID and UUID in the section above.")
 
 with tab2:
     st.write("-----")
