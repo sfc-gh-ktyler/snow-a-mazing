@@ -70,7 +70,7 @@ with tab1:
         else: 
             st.write('Choose a format for your name')
 
-        components.html("""<div> Something on a yellow bg </div>""")
+        components.html("""<div style]'color: red;'> Something on a yellow bg </div>""")
         
         
 
