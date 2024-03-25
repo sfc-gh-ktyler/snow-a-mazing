@@ -40,32 +40,39 @@ if find_my_uni_record:
 # Tabs
 tab1, tab2, tab3 = st.tabs(["Your Name", "Finding Info", "Name Entry Rules"])
 with tab1:
-    st.subheader("Your Name for Your Badge(s)")
-    st.write("We need your name for your badge. We want it to look nice so, we have rules. Please follow them.")
+    st.subheader("Edit or Confirm Your Name for Your Badge(s)")
+    st.write("Please format your name so that it will look nice on your badge.")
     
     with st.form("badge_name_and_email"):
         st.write("Confirm Your Name for Any Badges That Might Be Issued")     
         givenname = st.text_input("Given Name (Name used to greet you)", st.session_state.given_name)
         middlename = st.text_input('Middle Name/Nickname/Alternate-Spelling (Optional)', st.session_state.middle_name)
         familyname = st.text_input('Family Name', st.session_state.family_name)
-        name_has_nobiliary = st.checkbox("My family name has a nobiliary particle that I want in lower-case (e.g. von, von de, von der, de, da, de la etc)")
+        name_has_nobiliary = st.checkbox("My family name has a nobiliary particle that shoule remain lower-case (e.g. von, von de, von der, de, da, de la etc)")
+        
         badge_name_order = st.radio("Name Display Order You Prefer:",                            
                                ["[Given] [Middle] [Family]","[FAMILY] [Alternate-Spelling] [Given]", "[FAMILY] [Given] [Middle]", "[Given] [Middle] [FAMILY]"],
                                captions = ["Common in Anglo Traditions", "Good for including alternate script names", "East Asian Standard Order", "Common for French and Francophonic"]
                                )
-      
         if badge_name_order == "[Given] [Middle] [Family]" and name_has_nobiliary==True:
           name_test = givenname.capitalize() + " " + middlename.capitalize() + " " + familyname
         elif badge_name_order == "[Given] [Middle] [Family]" and name_has_nobiliary==False: 
-          name_test = givenname.upper() + " " + middlename.capitalize() + " " + familyname.capitalize() 
+          name_test = givenname.capitalize() + " " + middlename.capitalize() + " " + familyname.capitalize() 
         elif badge_name_order == "[FAMILY] [Alternate-Spelling] [Given]": 
-          name_test = familyname.upper + " " + middlename() + " " + givenname.capitalize() 
-        
+          name_test = familyname.upper + " " + middlename + " " + givenname.capitalize() 
+        elif badge_name_order == "[FAMILY] [Given] [Middle]": 
+          name_test = familyname.upper + " " + givenname.capitalize() + " " +  middlename.capitalize() 
+        elif badge_name_order == "[Given] [Middle] [FAMILY]":
+            name_test = givenname.capitalize() + " " +  middlename.capitalize() + " " + familyname.upper
+        else: 
+            st.write('Choose a format for your name')
+            
+        st.subheader(name_test)
       
-        show_my_name = st.form_submit_button("Display my name according to my entries above")
+        edit_name = st.form_submit_button("Save My Name")
 
     if show_my_name:
-      st.write(name_test)
+      st.suheader(name_test)
 
     submitted = st.button("Record My Name as Seen Above")
     if submitted:
