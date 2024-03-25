@@ -47,7 +47,7 @@ if find_my_uni_record:
             st.session_state['display_format'] = user_results['DISPLAY_FORMAT'].iloc[0]    
 
         if 'display_name' not in st.session_state:
-            st.session_state['display_name'] = user_results['DISPLAY_NAME'].iloc[0]
+            st.session_state['display_name'] = user_results['DISPLAY_NAME'].iloc[0] or "< no display name generated >"
     else:
         st.write("There is no record of the UNI_ID/UUID combination you entered. Please double-check the info you entered, read the tips on the FINDING INFO tab, and try again") 
 
