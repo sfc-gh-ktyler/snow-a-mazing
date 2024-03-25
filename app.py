@@ -141,7 +141,7 @@ with tab4:
             workshop = st.selectbox("Choose Workshop/Badge You Are Inquiring About:", options=badge_options, key=1)
             if 'workshop' not in st.session_state:
                 st.session_state['workshop'] = badge_options
-        
+            workshop_chosen = st.form_submit_button("Show Data on My Chosen Workshop")
  
 ########################
 with tab5:
