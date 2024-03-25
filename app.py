@@ -128,12 +128,13 @@ with tab3:
 
 ##########################################
 with tab4:
-    st.subheader("Choose the badge to check on your progress and provide us with info we might need")
+    st.subheader("View Trial Account and Badges Awarded Information")
     
     if st.session_state.auth_status == 'authed':
         user_trials_sql =  "select * from AMAZING.APP.USER_ACCOUNT_INFO_BY_COURSE where UNI_ID=trim('" + uni_id + "') and UNI_UUID=trim('"+ uni_uuid +"')"
         trials_df = session.sql(user_trials_sql)
         trials_results = trials_df.to_pandas()
+        st.dataframe(trials_results)
         
         with st.form("workshops"):          
             badge_options = ('Badge 1: DWW', 'Badge 2: CMCW', 'Badge 3: DABW', 'Badge 4: DLKW', 'Badge 5: DNGW')
