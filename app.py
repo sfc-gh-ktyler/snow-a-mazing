@@ -54,6 +54,8 @@ with tab1:
                                ["[Given] [Middle] [Family]","[FAMILY] [Alternate-Spelling] [Given]", "[FAMILY] [Given] [Middle]", "[Given] [Middle] [FAMILY]"],
                                captions = ["Common in Anglo Traditions", "Good for including alternate script names", "East Asian Standard Order", "Common for French and Francophonic"]
                                )
+        submit_edits = st.form_submit_button("Save My Name")
+        
         if badge_name_order == "[Given] [Middle] [Family]" and name_has_nobiliary==True:
             name_test = givenname.capitalize() + " " + middlename.capitalize() + " " + familyname
         
@@ -70,7 +72,7 @@ with tab1:
         else: 
             st.write('Choose a format for your name')
             
-        submit_edits = st.form_submit_button("Save My Name")
+
 
 
     if submit_edits:
