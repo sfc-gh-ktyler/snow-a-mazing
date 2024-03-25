@@ -78,8 +78,8 @@ with tab2:
 
         if submit_edits:
             session.call('AMAZING.APP.UPDATE_BADGENAME_BADGEEMAIL_SP',uni_id, uni_uuid, edited_given, edited_middle, edited_family, edited_email)
-            st.write('We got this far.')
-            # st.success('Badge Info Updates', icon='🚀')
+            # st.write('We got this far.')
+            st.success('Badge Name & Email Updated', icon='🚀')
             # st.rerun()
             st.markdown("""---""")  
         
@@ -99,22 +99,28 @@ with tab2:
             if submit_display_format:
                 if badge_name_order == display_option_1:
                     display_format = 1
+                    edited_display_name = display_option_1
                     
                 elif badge_name_order == display_option_2:
                     display_format = 2
+                    edited_display_name = display_option_2
                     
                 elif badge_name_order == display_option_3:
                     display_format = 3
+                    edited_display_name = display_option_3
                     
                 elif badge_name_order == display_option_1:
                     display_format = 4
+                    edited_display_name = display_option_4
                     
                 elif badge_name_order == display_option_1:
                     display_format = 5
-                    
+                    edited_display_name = display_option_5
                 else: 
                     st.write('Choose a format for your name')
-       
+                    
+                session.call('AMAZING.APP.UPDATE_BADGE_DISPLAYNAME_SP',uni_id, uni_uuid, display_format, edited_display_name)
+                st.success('Badge Display Name Updated', icon='🚀')
     else:
         st.write("Please sign in using your UNI_ID and UUID in the section above.")
 ##########################################
