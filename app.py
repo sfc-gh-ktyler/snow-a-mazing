@@ -31,7 +31,7 @@ if find_my_uni_record:
     this_user_df = session.sql(this_user_sql)
     user_results = this_user_df.to_pandas()                          
     user_rows = user_results.shape[0]
-    st.dataframe(user_rows)
+    st.dataframe(user_results)
     
     if user_rows>=1:
         st.session_state['auth_status'] = 'authed'
