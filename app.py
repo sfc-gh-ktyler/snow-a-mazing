@@ -63,7 +63,7 @@ with tab1:
         st.markdown("**EMAIL:** " + st.session_state.badge_email)
         st.markdown("**Name Will Display on Badge As:** " + st.session_state.display_name)
         st.write("-----")
-        st.markdown("*If your display name has not been generate or you would like to make other changes, go to the next tab and edit your information*")
+        st.markdown("*If your display name has not been generated, or you would like to make changes to information, go to the next tab and edit your information*")
     else:
         st.write("Please sign in using your UNI_ID and UUID in the section above.")
 
@@ -83,8 +83,7 @@ with tab2:
                                    captions = ["Common in Anglo Traditions", "Good for including alternate script names", "East Asian Standard Order", "Common for French and Francophonic"]
                                    )
             edited_email = st.text_input("The Email Address You Want Your Badge Sent To (does not have to match UNI, Snowflake Trial, or Work):", st.session_state.badge_email)
-            submit_edits = st.form_submit_button("Show My Badge Name")
-
+            
             if submit_edits:
                 if badge_name_order == "[Given] [Middle] [Family]" and name_has_nobiliary==True:
                     name_test = edited_given.capitalize() + " " + edited_middle.capitalize() + " " + edited_family
@@ -108,15 +107,15 @@ with tab2:
                     
                 elif badge_name_order == "[Given] [Middle] [FAMILY]":
                     name_test = edited_given.capitalize() + " " +  edited_middle.capitalize() + " " + edited_family.upper()
-                    st.markdown("Your name will appear on your badge as: **" + name_test + "**")
+                    st.markdown("PREVIEW NAME TO BE DISPLAYED ON BADGE: **" + name_test + "**")
                     display_format = 4
                     
                 else: 
                     st.write('Choose a format for your name')
-                    
+                submit_edits = st.form_submit_button("Show My Badge Name")   
                
         if submit_edits:
-            session.call('AMAZING.APP.UPDATE_BADGENAME_BADGEEMAIL_SP',uni_id, uni_uuid, edited_given, edited_middle, edited_family, edited_email, name_has_nobiliary, display_format, display_name )
+            session.call('AMAZING.APP.UPDATE_BADGENAME_BADGEEMAIL_SP',uni_id, uni_uuid, edited_given, edited_middle, edited_family, edited_email, name_has_nobiliary, display_format, name_test )
             st.success('Badge Info Updates', icon='🚀')
             st.experimental_rerun()
             st.markdown("""---""")         
