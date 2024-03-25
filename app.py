@@ -63,7 +63,7 @@ with tab1:
         st.markdown("**EMAIL:** " + st.session_state.badge_email)
         st.markdown("**Name Will Display on Badge As:** " + st.session_state.display_name)
         st.write("-----")
-        st.markdown("*If you would like to make changes, edit your information on the next tab*")
+        st.markdown("*If your display name has not been generate or you would like to make other changes, go to the next tab and edit your information*")
     else:
         st.write("Please sign in using your UNI_ID and UUID in the section above.")
 
@@ -116,7 +116,7 @@ with tab2:
                     
                
         if submit_edits:
-            session.call('AMAZING.APP.UPDATE_BADGENAME_BADGEEMAIL_SP',uni_id, uni_uuid, edited_given, edited_middle, edited_family, edited_email, nobiliary, display_format, display_name )
+            session.call('AMAZING.APP.UPDATE_BADGENAME_BADGEEMAIL_SP',uni_id, uni_uuid, edited_given, edited_middle, edited_family, edited_email, name_has_nobiliary, display_format, display_name )
             st.success('Badge Info Updates', icon='🚀')
             st.experimental_rerun()
             st.markdown("""---""")         
