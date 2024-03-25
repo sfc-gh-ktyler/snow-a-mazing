@@ -49,7 +49,7 @@ with tab1:
         st.markdown("**GIVEN NAME:** " + st.session_state.given_name)
         st.markdown("**MIDDLE/ALTERNATE NAME:** "+ st.session_state.middle_name) 
         st.markdown("**FAMILY NAME:** " + st.session_state.family_name)
-        st.markdown("**EMAIL:**" + st.session_state.badge_email)
+        st.markdown("**EMAIL:** " + st.session_state.badge_email)
         st.write("-----")
         st.markdown("*If you would like to make changed, edit your information on the next tab*")
     else:
