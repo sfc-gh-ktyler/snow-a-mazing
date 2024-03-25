@@ -49,7 +49,7 @@ if find_my_uni_record:
         st.markdown(":red[There is no record of the UNI_ID/UUID combination you entered. Please double-check the info you entered, read the tips on the FINDING INFO tab, and try again]") 
 
 ###################################### Tabs
-tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["View Name/Email", "Edit Name/Email","Choose Name Display", "My Trial Accounts", "FAQs"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["View Name/Email", "Edit Name/Email","Choose Name Display", "My Trial Accounts", "FAQs"])
 
 with tab1:
     st.subheader("Your Name and Email - Currently Stored in Our System")
