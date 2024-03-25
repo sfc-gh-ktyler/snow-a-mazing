@@ -80,17 +80,17 @@ with tab2:
             submit_edits = st.form_submit_button("Update My Badge Name & Badge Email")  
 
         if submit_edits:
-            session.call('AMAZING.APP.UPDATE_BADGENAME_BADGEEMAIL_SP',uni_id, uni_uuid, edited_given, edited_middle, edited_family, edited_email, name_has_nobiliary, display_format, name_test )
+            session.call('AMAZING.APP.UPDATE_BADGENAME_BADGEEMAIL_SP',uni_id, uni_uuid, edited_given, edited_middle, edited_family, edited_email, name_has_nobiliary, display_format, display_name )
             st.success('Badge Info Updates', icon='🚀')
             st.experimental_rerun()
             st.markdown("""---""")  
         
             with st.form("display_formatting"):
-                display_option_1 = edited_given.capitalize() + " " + edited_middle.capitalize() + " " + edited_family.capitalize() //lazy do it for me
-                display_option_2 = edited_given.capitalize() + " " + edited_middle.capitalize() + " " + edited_family //anglo nobiliary
-                display_option_3 = edited_family.upper() + " " + edited_middle + " " + edited_given.capitalize()  //east asian with alt script middle
-                display_option_4 = edited_family.upper() + " " +  edited_given.capitalize() + " " + edited_middle.capitalize() //east asian with alt script middle
-                display_option_5 = edited_given.capitalize() + " " +  edited_middle.capitalize() + " " + edited_family.upper() //ze french
+                display_option_1 = edited_given.capitalize() + " " + edited_middle.capitalize() + " " + edited_family.capitalize() #lazy do it for me
+                display_option_2 = edited_given.capitalize() + " " + edited_middle.capitalize() + " " + edited_family #european w nobiliary
+                display_option_3 = edited_family.upper() + " " + edited_middle + " " + edited_given.capitalize()  #east asian with alt script middle
+                display_option_4 = edited_family.upper() + " " +  edited_given.capitalize() + " " + edited_middle.capitalize() #east asian with alt script middle
+                display_option_5 = edited_given.capitalize() + " " +  edited_middle.capitalize() + " " + edited_family.upper() #ze french
                 
                 badge_name_order = st.radio("Name Display Order You Prefer:",                            
                                    [display_option_1, display_option_2, display_option_3, display_option_4, display_option_5],
