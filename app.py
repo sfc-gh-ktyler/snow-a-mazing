@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import streamlit.components.v1 as components
 
 cnx=st.connection("snowflake")
 session = cnx.session()
