@@ -128,7 +128,7 @@ with tab3:
 
 ##########################################
 with tab4:
-    st.write.subheader("Choose the badge to check on your progress and provide us with info we might need")
+    st.subheader("Choose the badge to check on your progress and provide us with info we might need")
     
     if st.session_state.auth_status == 'authed':
         user_trials_sql =  "select * from AMAZING.APP.USER_ACCOUNT_INFO_BY_COURSE where UNI_ID=trim('" + uni_id + "') and UNI_UUID=trim('"+ uni_uuid +"')"
