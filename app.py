@@ -91,7 +91,7 @@ with tab2:
     else:
         st.write("Please sign in using your UNI_ID and UUID in the section above.")
 
-with tab2:
+with tab3:
     st.write("-----")
     st.subheader("FINDING YOUR INFORMATION:")
     st.write("In order to make edits, you must enter the correct combination of your UNI ID and the UUID we have assigned to you.")
@@ -99,7 +99,7 @@ with tab2:
     st.write("Your learn.snowflake.com UNI_UUID is displayed on the page of the workshop that linked you to this app.")
     st.write("-----")
 
-with tab3:
+with tab4:
     st.subheader("Our Very Nit-picky Name Rules")
     st.write("We want your name to look nice on your badge(s). We want your badge(s) to accurately represent your name and securely represent your accomplishments.")
     st.write("Because of this, we have rules around what names can and should be used. If your entries fail, read over these rules until you figure out what went wrong.")
@@ -125,34 +125,14 @@ with tab3:
     st.write("We do not like the recent Southeast Asian trend of using a few initials as a last name. e.g. Kumar KS is not a good badge name because there are too many Kumar KS\'s in the world.")
     st.write("If you are Southeast Asian, please use the longer version of your name - not a given name followed by initials for the family names.")
 
-             
-             
-             
+    starts_right = uni_id[:3]
 
-             
-            
-             
-             
+    if starts_right == '005' and len(uni_id)<20 and len(uni_id)>17:
+        st.write('Seems Legit')
 
-         
+        badge_options = ('Badge 1: DWW', 'Badge 2: CMCW', 'Badge 3: DABW', 'Badge 4: DLKW', 'Badge 5: DNGW')
 
-
-starts_right = uni_id[:3]
-
-if starts_right == '005' and len(uni_id)<20 and len(uni_id)>17:
-    st.write('Seems Legit')
-
-
-
-
-  
-  
-
-
-
-badge_options = ('Badge 1: DWW', 'Badge 2: CMCW', 'Badge 3: DABW', 'Badge 4: DLKW', 'Badge 5: DNGW')
-
-workshop = st.selectbox("Choose Workshop/Badge", options=badge_options, key=1)
+        workshop = st.selectbox("Choose Workshop/Badge", options=badge_options, key=1)
 
 
 
