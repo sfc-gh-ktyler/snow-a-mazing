@@ -45,7 +45,7 @@ tab1, tab2, tab3, tab4 = st.tabs(["View Your Name and Email", "Edit Your Name an
 
 with tab1:
     st.subheader("Your Name and Email - Currently Stored in Our System")
-    if st.session_state.auth_status = 'authed':
+    if st.session_state.auth_status == 'authed':
         st.write("GIVEN NAME: " + st.session_state.given_name)
         st.write("MIDDLE/ALTERNATE NAME: "+ st.session_state.middle_name) 
         st.write("FAMILY NAME: " + st.session_state.family_name)
@@ -56,7 +56,7 @@ with tab1:
 with tab2:
     st.subheader("Edit or Confirm Your Name for Your Badge(s)")
     st.write("Please format your name so that it will look nice on your badge.")
-    if st.session_state.auth_status = 'authed':
+    if st.session_state.auth_status == 'authed':
         with st.form("badge_name_and_email"):
             st.write("Confirm Your Name for Any Badges That Might Be Issued")     
             edited_given = st.text_input("Given Name (Name used to greet you)", st.session_state.given_name)
