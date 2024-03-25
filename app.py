@@ -82,21 +82,21 @@ with tab2:
             st.success('Badge Name & Email Updated', icon='🚀')
             # st.rerun()
             st.markdown("""---""")  
+    else:
+        st.write("Please sign in using your UNI_ID and UUID in the section above.")  
         
-            with st.form("display_formatting"):
-                display_option_1 = edited_given.capitalize() + " " + edited_middle.capitalize() + " " + edited_family.capitalize() #lazy do it for me
-                display_option_2 = edited_given.capitalize() + " " + edited_middle.capitalize() + " " + edited_family #european w nobiliary
-                display_option_3 = edited_family.upper() + " " + edited_middle + " " + edited_given.capitalize()  #east asian with alt script middle
-                display_option_4 = edited_family.upper() + " " +  edited_given.capitalize() + " " + edited_middle.capitalize() #east asian with alt script middle
-                display_option_5 = edited_given.capitalize() + " " +  edited_middle.capitalize() + " " + edited_family.upper() #ze french
+        with st.form("display_formatting"):
+            display_option_1 = edited_given.capitalize() + " " + edited_middle.capitalize() + " " + edited_family.capitalize() #lazy do it for me
+            display_option_2 = edited_given.capitalize() + " " + edited_middle.capitalize() + " " + edited_family #european w nobiliary
+            display_option_3 = edited_family.upper() + " " + edited_middle + " " + edited_given.capitalize()  #east asian with alt script middle
+            display_option_4 = edited_family.upper() + " " +  edited_given.capitalize() + " " + edited_middle.capitalize() #east asian with alt script middle
+            display_option_5 = edited_given.capitalize() + " " +  edited_middle.capitalize() + " " + edited_family.upper() #ze french
                 
-                badge_name_order = st.radio("Name Display Order You Prefer:",                            
-                                   [display_option_1, display_option_2, display_option_3, display_option_4, display_option_5],
-                                   captions = ["Common in Anglo Traditions", "For names with nobiliary particles", "For use with dual script like 전 JEON Joon-kook 정국 ", "For cultures that put FAMILY name first", "Common for French and Francophonic"]
+            badge_name_order = st.radio("Name Display Order You Prefer:",                            
+                                  [display_option_1, display_option_2, display_option_3, display_option_4, display_option_5],
+                                  captions = ["Common in Anglo Traditions", "For names with nobiliary particles", "For use with dual script like 전 JEON Joon-kook 정국 ", "For cultures that put FAMILY name first", "Common for French and Francophonic"]
                                    )
-                submit_display_format = st.form_submit_button("Record My Name Display Preference")
-        else:
-            st.write("Please sign in using your UNI_ID and UUID in the section above.")    
+            submit_display_format = st.form_submit_button("Record My Name Display Preference")
         
         if submit_display_format:
             if badge_name_order == display_option_1:
