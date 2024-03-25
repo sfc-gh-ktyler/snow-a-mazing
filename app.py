@@ -51,7 +51,7 @@ with tab1:
         st.markdown("**FAMILY NAME:** " + st.session_state.family_name)
         st.markdown("**EMAIL:** " + st.session_state.badge_email)
         st.write("-----")
-        st.markdown("*If you would like to make changed, edit your information on the next tab*")
+        st.markdown("*If you would like to make changes, edit your information on the next tab*")
     else:
         st.write("Please sign in using your UNI_ID and UUID in the section above.")
 
