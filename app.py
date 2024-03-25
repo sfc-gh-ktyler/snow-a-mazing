@@ -19,24 +19,21 @@ if find_my_uni_record:
     user_rows = user_results.shape[0]
     
     if user_rows>=1:
-        # st.dataframe(user_results)
-        
         if 'uni_id' not in st.session_state:
             st.session_state['uni_id'] = uni_id
             
-        init_givenname = user_results['BADGE_GIVEN_NAME'].iloc[0]
         if 'given_name' not in st.session_state:
-            st.session_state['given_name'] = init_givenname
+            st.session_state['given_name'] = user_results['BADGE_GIVEN_NAME'].iloc[0]
         
-        init_middlename = user_results['BADGE_MIDDLE_NAME'].iloc[0]
         if 'middle_name' not in st.session_state:
-            st.session_state['middle_name'] = init_middlename
+            st.session_state['middle_name'] = user_results['BADGE_MIDDLE_NAME'].iloc[0]
         
-        init_familyname = user_results['BADGE_FAMILY_NAME'].iloc[0]
         if 'family_name' not in st.session_state:
-            st.session_state['family_name'] = init_familyname
+            st.session_state['family_name'] = user_results['BADGE_FAMILY_NAME'].iloc[0]
 
         st.write(st.session_state.given_name)
+        st.write(st.sesssion_state.middle_name)
+        st.write(st.session_state.family_name)
     else:
         st.write("There is no record of the UNI_ID/UUID combination you entered. Please double-check the info you entered, read the tips on the FINDING INFO tab, and try again") 
 
@@ -45,7 +42,7 @@ tab1, tab2, tab3 = st.tabs(["Your Name", "Finding Info", "Name Entry Rules"])
 with tab1:
     st.subheader("Your Name for Your Badge(s)")
     st.write("We need your name for your badge. We want it to look nice so, we have rules. Please follow them.")
-    st.write(st.session_state.given_name)
+    
     with st.form("badge_name_and_email"):
         st.write("Confirm Your Name for Any Badges That Might Be Issued")     
         givenname = st.text_input("Given Name (Name used to greet you)")
