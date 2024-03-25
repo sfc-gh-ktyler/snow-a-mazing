@@ -45,9 +45,9 @@ with tab1:
     
     with st.form("badge_name_and_email"):
         st.write("Confirm Your Name for Any Badges That Might Be Issued")     
-        givenname = st.text_input("Given Name (Name used to greet you)", st.session_state.given_name)
-        middlename = st.text_input('Middle Name/Nickname/Alternate-Spelling (Optional)', st.session_state.middle_name)
-        familyname = st.text_input('Family Name', st.session_state.family_name)
+        edited_given = st.text_input("Given Name (Name used to greet you)", st.session_state.given_name)
+        edited_middle = st.text_input('Middle Name/Nickname/Alternate-Spelling (Optional)', st.session_state.middle_name)
+        edited_family = st.text_input('Family Name', st.session_state.family_name)
         name_has_nobiliary = st.checkbox("My family name has a nobiliary particle that shoule remain lower-case (e.g. von, von de, von der, de, da, de la etc)")
         
         badge_name_order = st.radio("Name Display Order You Prefer:",                            
@@ -57,18 +57,20 @@ with tab1:
         submit_edits = st.form_submit_button("Save My Name")
         
         if badge_name_order == "[Given] [Middle] [Family]" and name_has_nobiliary==True:
-            name_test = givenname.capitalize() + " " + middlename.capitalize() + " " + familyname
-        
+            name_test = edited_given.capitalize() + " " + edited_middle.capitalize() + " " + edited_family
+            st.subheader(name_test)
         elif badge_name_order == "[Given] [Middle] [Family]" and name_has_nobiliary==False: 
-            name_test = givenname.capitalize() + " " + middlename.capitalize() + " " + familyname.capitalize() 
+            name_test = edited_given.capitalize() + " " + edited_middle.capitalize() + " " + edited_family.capitalize() 
             st.subheader(name_test)
         elif badge_name_order == "[FAMILY] [Alternate-Spelling] [Given]": 
-            name_test = familyname.upper + " " + middlename + " " + givenname.capitalize() 
+            name_test = edited_family.upper + " " + edited_middle + " " + edited_given.capitalize() 
             st.subheader(name_test)
         elif badge_name_order == "[FAMILY] [Given] [Middle]": 
-            name_test = familyname.upper + " " + givenname.capitalize() + " " +  middlename.capitalize() 
+            name_test = edited_family.upper + " " + edited_given.capitalize() + " " +  edited_middle.capitalize() 
+            st.subheader(name_test)
         elif badge_name_order == "[Given] [Middle] [FAMILY]":
-            name_test = givenname.capitalize() + " " +  middlename.capitalize() + " " + familyname.upper
+            name_test = edited_given.capitalize() + " " +  edited_middle.capitalize() + " " + edited_family.upper
+            st.subheader(name_test)
         else: 
             st.write('Choose a format for your name')
             
