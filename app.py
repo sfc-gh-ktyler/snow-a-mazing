@@ -32,7 +32,7 @@ if find_my_uni_record:
             st.session_state['family_name'] = user_results['BADGE_FAMILY_NAME'].iloc[0]
 
         st.write(st.session_state.given_name)
-        st.write(st.sesssion_state.middle_name)
+        st.write(st.session_state.middle_name)
         st.write(st.session_state.family_name)
     else:
         st.write("There is no record of the UNI_ID/UUID combination you entered. Please double-check the info you entered, read the tips on the FINDING INFO tab, and try again") 
