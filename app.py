@@ -113,11 +113,11 @@ with tab3:
                 display_format = 3
                 edited_display_name = display_option_3
                     
-            elif badge_name_order == display_option_1:
+            elif badge_name_order == display_option_4:
                 display_format = 4
                 edited_display_name = display_option_4
                     
-            elif badge_name_order == display_option_1:
+            elif badge_name_order == display_option_5:
                 display_format = 5
                 edited_display_name = display_option_5
             else: 
