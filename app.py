@@ -46,7 +46,7 @@ if find_my_uni_record:
         if 'display_name' not in st.session_state:
             st.session_state['display_name'] = user_results['DISPLAY_NAME'].iloc[0]
     else:
-        st.write("There is no record of the UNI_ID/UUID combination you entered. Please double-check the info you entered, read the tips on the FINDING INFO tab, and try again") 
+        st.markdwown(":red[There is no record of the UNI_ID/UUID combination you entered. Please double-check the info you entered, read the tips on the FINDING INFO tab, and try again]") 
 
 ###################################### Tabs
 tab1, tab2, tab3, tab4 = st.tabs(["View Your Name and Email", "Edit Your Name and Email","Finding Your Information", "Name Entry Rules"])
