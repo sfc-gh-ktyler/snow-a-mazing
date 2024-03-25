@@ -47,7 +47,7 @@ if find_my_uni_record:
             st.session_state['display_format'] = user_results['DISPLAY_FORMAT'].iloc[0]    
 
         if 'display_name' not in st.session_state:
-            st.session_state['display_name'] = user_results['DISPLAY_NAME'].iloc[0] or "< no display name generated >"
+            st.session_state['display_name'] = user_results['DISPLAY_NAME'].iloc[0]"
     else:
         st.write("There is no record of the UNI_ID/UUID combination you entered. Please double-check the info you entered, read the tips on the FINDING INFO tab, and try again") 
 
@@ -61,7 +61,7 @@ with tab1:
         st.markdown("**MIDDLE/ALTERNATE NAME:** "+ st.session_state.middle_name) 
         st.markdown("**FAMILY NAME:** " + st.session_state.family_name)
         st.markdown("**EMAIL:** " + st.session_state.badge_email)
-        st.markdown("**Name Will Display on Badge As:** " + st.session_state.display_name  or "<no display name LOWER generated>")
+        st.markdown("**Name Will Display on Badge As:** " + st.session_state.display_name)
         st.write("-----")
         st.markdown("*If you would like to make changes, edit your information on the next tab*")
     else:
