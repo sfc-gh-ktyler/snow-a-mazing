@@ -131,19 +131,17 @@ with tab4:
     write.subheader("Choose the badge to check on your progress and provide us with info we might need")
     
     if st.session_state.auth_status == 'authed':
-        with st.form("workshops"):
         user_trials_sql =  "select * from AMAZING.APP.USER_ACCOUNT_INFO_BY_COURSE where UNI_ID=trim('" + uni_id + "') and UNI_UUID=trim('"+ uni_uuid +"')"
         trials_df = session.sql(user_trials_sql)
-        trials_results = this_user_df.to_pandas() 
-            
-        badge_options = ('Badge 1: DWW', 'Badge 2: CMCW', 'Badge 3: DABW', 'Badge 4: DLKW', 'Badge 5: DNGW')
-        workshop = st.selectbox("Choose Workshop/Badge You Are Inquiring About:", options=badge_options, key=1)
-        if 'workshop' not in st.session_state:
-            st.session_state['workshop'] = badge_options
+        trials_results = this_user_df.to_pandas()
         
-        user_trials_sql =  "select * from AMAZING.APP.USER_ACCOUNT_INFO_BY_COURSE where UNI_ID=trim('" + uni_id + "') and UNI_UUID=trim('"+ uni_uuid +"')"
-        trials_df = session.sql(user_trials_sql)
-        trials_results = this_user_df.to_pandas()  
+        with st.form("workshops"):          
+            badge_options = ('Badge 1: DWW', 'Badge 2: CMCW', 'Badge 3: DABW', 'Badge 4: DLKW', 'Badge 5: DNGW')
+            workshop = st.selectbox("Choose Workshop/Badge You Are Inquiring About:", options=badge_options, key=1)
+            if 'workshop' not in st.session_state:
+                st.session_state['workshop'] = badge_options
+        
+ 
 ########################
 with tab5:
     st.subheader("How do I find my UNI_ID? How do I find my UNI_UUID?")
