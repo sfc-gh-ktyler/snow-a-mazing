@@ -76,49 +76,49 @@ with tab2:
             edited_given = st.text_input("Given Name (Name used to greet you)", st.session_state.given_name)
             edited_middle = st.text_input('Middle Name/Nickname/Alternate-Spelling (Optional)', st.session_state.middle_name)
             edited_family = st.text_input('Family Name', st.session_state.family_name)
-            name_has_nobiliary = st.checkbox("My family name has a nobiliary particle. No changes should be made to lower-case parts of my last name (e.g. von, von de, von der, de, da, de la etc)")
-            
-            badge_name_order = st.radio("Name Display Order You Prefer:",                            
-                                   ["[Given] [Middle] [Family]","[FAMILY] [Alternate-Spelling] [Given]", "[FAMILY] [Given] [Middle]", "[Given] [Middle] [FAMILY]"],
-                                   captions = ["Common in Anglo Traditions", "Good for including alternate script names", "East Asian Standard Order", "Common for French and Francophonic"]
-                                   )
             edited_email = st.text_input("The Email Address You Want Your Badge Sent To (does not have to match UNI, Snowflake Trial, or Work):", st.session_state.badge_email)
-            
-            if submit_edits:
-                if badge_name_order == "[Given] [Middle] [Family]" and name_has_nobiliary==True:
-                    name_test = edited_given.capitalize() + " " + edited_middle.capitalize() + " " + edited_family
-                    st.markdown("Your name will appear on your badge as: **" + name_test + "**")
-                    display_format = 1
-                    
-                elif badge_name_order == "[Given] [Middle] [Family]" and name_has_nobiliary==False: 
-                    name_test = edited_given.capitalize() + " " + edited_middle.capitalize() + " " + edited_family.capitalize() 
-                    st.markdown("Your name will appear on your badge as: **" + name_test + "**")
-                    display_format = 1
-                    
-                elif badge_name_order == "[FAMILY] [Alternate-Spelling] [Given]": 
-                    name_test = edited_family.upper() + " " + edited_middle + " " + edited_given.capitalize() 
-                    st.markdown("Your name will appear on your badge as: **" + name_test + "**")
-                    display_format = 2
-                    
-                elif badge_name_order == "[FAMILY] [Given] [Middle]": 
-                    name_test = edited_family.upper() + " " + edited_given.capitalize() + " " +  edited_middle.capitalize() 
-                    st.markdown("Your name will appear on your badge as: **" + name_test + "**")
-                    display_format = 3
-                    
-                elif badge_name_order == "[Given] [Middle] [FAMILY]":
-                    name_test = edited_given.capitalize() + " " +  edited_middle.capitalize() + " " + edited_family.upper()
-                    st.markdown("PREVIEW NAME TO BE DISPLAYED ON BADGE: **" + name_test + "**")
-                    display_format = 4
-                    
-                else: 
-                    st.write('Choose a format for your name')
-                submit_edits = st.form_submit_button("Show My Badge Name")   
-               
+            submit_edits = st.form_submit_button("Update My Badge Name & Badge Email")  
+
         if submit_edits:
             session.call('AMAZING.APP.UPDATE_BADGENAME_BADGEEMAIL_SP',uni_id, uni_uuid, edited_given, edited_middle, edited_family, edited_email, name_has_nobiliary, display_format, name_test )
             st.success('Badge Info Updates', icon='🚀')
             st.experimental_rerun()
-            st.markdown("""---""")         
+            st.markdown("""---""")  
+        
+            with st.form("display_formatting"):
+                display_option_1 = edited_given.capitalize() + " " + edited_middle.capitalize() + " " + edited_family.capitalize() //lazy do it for me
+                display_option_2 = edited_given.capitalize() + " " + edited_middle.capitalize() + " " + edited_family //anglo nobiliary
+                display_option_3 = edited_family.upper() + " " + edited_middle + " " + edited_given.capitalize()  //east asian with alt script middle
+                display_option_4 = edited_family.upper() + " " +  edited_given.capitalize() + " " + edited_middle.capitalize() //east asian with alt script middle
+                display_option_5 = edited_given.capitalize() + " " +  edited_middle.capitalize() + " " + edited_family.upper() //ze french
+                
+                badge_name_order = st.radio("Name Display Order You Prefer:",                            
+                                   [display_option_1, display_option_2, display_option_3, display_option_4, display_option_5],
+                                   captions = ["Common in Anglo Traditions", "For names with nobiliary particles", "For use with dual script like 전 JEON Joon-kook 정국 ", "For cultures that put FAMILY name first", "Common for French and Francophonic"]
+                                   )
+                submit_display_format = st.form_submit_button("Record My Name Display Preference")
+            
+            if submit_display_format:
+                if badge_name_order == display_option_1:
+                    display_format = 1
+                    
+                elif badge_name_order == display_option_2:
+                    display_format = 2
+                    
+                elif badge_name_order == display_option_3:
+                    display_format = 3
+                    
+                elif badge_name_order == display_option_1:
+                    display_format = 4
+                    
+                elif badge_name_order == display_option_1:
+                    display_format = 5
+                    
+                else: 
+                    st.write('Choose a format for your name')
+                
+               
+       
     else:
         st.write("Please sign in using your UNI_ID and UUID in the section above.")
 ##########################################
