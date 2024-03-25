@@ -55,7 +55,7 @@ with tab1:
 
 with tab2:
     st.subheader("Edit or Confirm Your Name for Your Badge(s)")
-    st.write("Please format your name so that it will look nice on your badge.")
+
     if st.session_state.auth_status == 'authed':
         with st.form("badge_name_and_email"):
             st.write("Confirm Your Name for Any Badges That Might Be Issued")     
@@ -92,12 +92,10 @@ with tab2:
         st.write("Please sign in using your UNI_ID and UUID in the section above.")
 
 with tab3:
-    st.write("-----")
     st.subheader("FINDING YOUR INFORMATION:")
     st.write("In order to make edits, you must enter the correct combination of your UNI ID and the UUID we have assigned to you.")
     st.write("Your UNI ID can be found in the top-right corner of the workshop page. It begins with 053 and is a string of letters and numbers.")
     st.write("Your learn.snowflake.com UNI_UUID is displayed on the page of the workshop that linked you to this app.")
-    st.write("-----")
 
 with tab4:
     st.subheader("Our Very Nit-picky Name Rules")
@@ -112,19 +110,17 @@ with tab4:
     st.write("* NICKNAME Example: Harold \"Harry\" Simpson (common way to display a nickname in the US)")
     st.write("* KOREAN Example: 전 Jeon Joon-kook 정국  (with Roman script used in Middle Name field. Hangule used in First and Family name fields)" )
     st.write("* UKRANIAN Example: Volodymyr Володимир Зеленський Zelenskyy (with Cyrillic script used in Middle Name field, Roman script in First and Family Name fields.)")
-
-    
-  
+    st.write("-----")
     st.write("CHARACTER CASE RULES:")
     st.write("* Proper Mixed Case is required for given names and middle names. (Initial-letter capitalization)")
     st.write("* ALL UPPER CASE is allowed for family names.")
     st.write("* All lower case is allowed for in family names for nobiliary particles like van, van der, de, de la, etc. but the other parts of the family name should be mixed case.")
-
+    st.write("-----")
     st.write("NAME LENGTH RULES:")
     st.write("We recognize that East Asian names can sometimes be very few characters. Southeast Asian and Spanish names can sometimes be many, many characters.")
     st.write("We do not like the recent Southeast Asian trend of using a few initials as a last name. e.g. Kumar KS is not a good badge name because there are too many Kumar KS\'s in the world.")
     st.write("If you are Southeast Asian, please use the longer version of your name - not a given name followed by initials for the family names.")
-
+    st.write("-----")
     starts_right = uni_id[:3]
 
     if starts_right == '005' and len(uni_id)<20 and len(uni_id)>17:
