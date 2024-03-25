@@ -49,7 +49,7 @@ if find_my_uni_record:
         st.markdown(":red[There is no record of the UNI_ID/UUID combination you entered. Please double-check the info you entered, read the tips on the FINDING INFO tab, and try again]") 
 
 ###################################### Tabs
-tab1, tab2, tab3, tab4 = st.tabs(["View Details", "Edit Details","Choose Display", "FAQs"])
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["View Name/Email", "Edit Name/Email","Choose Name Display", "My Trial Accounts", "FAQs"])
 
 with tab1:
     st.subheader("Your Name and Email - Currently Stored in Our System")
@@ -128,7 +128,25 @@ with tab3:
 
 ##########################################
 with tab4:
-    st.subheader("Finding Your Login Information:")
+    write.subheader("Choose the badge to check on your progress and provide us with info we might need")
+    
+    if st.session_state.auth_status == 'authed':
+        with st.form("workshops"):
+        user_trials_sql =  "select * from AMAZING.APP.USER_ACCOUNT_INFO_BY_COURSE where UNI_ID=trim('" + uni_id + "') and UNI_UUID=trim('"+ uni_uuid +"')"
+        trials_df = session.sql(user_trials_sql)
+        trials_results = this_user_df.to_pandas() 
+            
+        badge_options = ('Badge 1: DWW', 'Badge 2: CMCW', 'Badge 3: DABW', 'Badge 4: DLKW', 'Badge 5: DNGW')
+        workshop = st.selectbox("Choose Workshop/Badge You Are Inquiring About:", options=badge_options, key=1)
+        if 'workshop' not in st.session_state:
+            st.session_state['workshop'] = badge_options
+        
+        user_trials_sql =  "select * from AMAZING.APP.USER_ACCOUNT_INFO_BY_COURSE where UNI_ID=trim('" + uni_id + "') and UNI_UUID=trim('"+ uni_uuid +"')"
+        trials_df = session.sql(user_trials_sql)
+        trials_results = this_user_df.to_pandas()  
+########################
+with tab5:
+    st.subheader("How do I find my UNI_ID? How do I find my UNI_UUID?")
     st.write("In order to make edits, you must enter the correct combination of your UNI ID and the UUID we have assigned to you.")
     st.write("Your UNI ID can be found in the top-right corner of the workshop page. It begins with 053 and is a string of letters and numbers.")
     st.write("Your learn.snowflake.com UNI_UUID is displayed on the page of the workshop that linked you to this app.")
@@ -158,14 +176,10 @@ with tab4:
     st.write("We check for name length so please use name that is long enough to be distinctive. Imagine that someone wants to challenge you by claiming your badge as theirs. You will want a name distinctive enough that you can prove the badge belongs to you, and not some one else with a similar name")
     st.write("All three name fields can have multiple separate words. You have up to 100 characters per name field, for a total number of 300 characters.")
     st.write("-----")
-    starts_right = uni_id[:3]
+  
+    
 
-    if starts_right == '005' and len(uni_id)<20 and len(uni_id)>17:
-        st.write('Seems Legit')
 
-        badge_options = ('Badge 1: DWW', 'Badge 2: CMCW', 'Badge 3: DABW', 'Badge 4: DLKW', 'Badge 5: DNGW')
-
-        workshop = st.selectbox("Choose Workshop/Badge", options=badge_options, key=1)
 
 
 
