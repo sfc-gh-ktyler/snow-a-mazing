@@ -37,12 +37,14 @@ if find_my_uni_record:
         st.write("There is no record of the UNI_ID/UUID combination you entered. Please double-check the info you entered, read the tips on the FINDING INFO tab, and try again") 
 
 # Tabs
-tab1, tab2, tab3, tab4 = st.tabs(["Lookup Your Name and Email", "Edit Your Name and Email", "Name Entry Rules"])
+tab1, tab2, tab3, tab4 = st.tabs(["View Your Name and Email", "Edit Your Name and Email", "Name Entry Rules"])
 
 with tab1:
-    st.subheader("Your Name and Email")
-    st.write("NAME:" + st.session_state.given_name + " " + st.session_state.middle_name + " " + st.session_state.family_name)
-    st.write("EMAIL:" + st.session_state.email)
+    st.subheader("Your Name and Email - Currenly Stored in Our System")
+    st.write("GIVEN NAME: " + st.session_state.given_name)
+    st.write("MIDDLE/ALTERNATE NAME: "+ st.session_state.middle_name) 
+    st.write("FAMILY NAME: " + st.session_state.family_name)
+    st.write("EMAIL:" + st.session_state.badge_email)
 
 with tab2:
     st.subheader("Edit or Confirm Your Name for Your Badge(s)")
