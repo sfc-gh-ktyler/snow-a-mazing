@@ -95,34 +95,35 @@ with tab2:
                                    captions = ["Common in Anglo Traditions", "For names with nobiliary particles", "For use with dual script like 전 JEON Joon-kook 정국 ", "For cultures that put FAMILY name first", "Common for French and Francophonic"]
                                    )
                 submit_display_format = st.form_submit_button("Record My Name Display Preference")
-            
-            if submit_display_format:
-                if badge_name_order == display_option_1:
-                    display_format = 1
-                    edited_display_name = display_option_1
+        else:
+            st.write("Please sign in using your UNI_ID and UUID in the section above.")    
+        
+        if submit_display_format:
+            if badge_name_order == display_option_1:
+                display_format = 1
+                edited_display_name = display_option_1
                     
-                elif badge_name_order == display_option_2:
-                    display_format = 2
-                    edited_display_name = display_option_2
+            elif badge_name_order == display_option_2:
+                display_format = 2
+                edited_display_name = display_option_2
                     
-                elif badge_name_order == display_option_3:
-                    display_format = 3
-                    edited_display_name = display_option_3
+            elif badge_name_order == display_option_3:
+                display_format = 3
+                edited_display_name = display_option_3
                     
-                elif badge_name_order == display_option_1:
-                    display_format = 4
-                    edited_display_name = display_option_4
+            elif badge_name_order == display_option_1:
+                display_format = 4
+                edited_display_name = display_option_4
                     
-                elif badge_name_order == display_option_1:
-                    display_format = 5
-                    edited_display_name = display_option_5
-                else: 
-                    st.write('Choose a format for your name')
+            elif badge_name_order == display_option_1:
+                display_format = 5
+                edited_display_name = display_option_5
+            else: 
+                st.write('Choose a format for your name')
                     
-                session.call('AMAZING.APP.UPDATE_BADGE_DISPLAYNAME_SP',uni_id, uni_uuid, display_format, edited_display_name)
-                st.success('Badge Display Name Updated', icon='🚀')
-    else:
-        st.write("Please sign in using your UNI_ID and UUID in the section above.")
+            session.call('AMAZING.APP.UPDATE_BADGE_DISPLAYNAME_SP',uni_id, uni_uuid, display_format, edited_display_name)
+            st.success('Badge Display Name Updated', icon='🚀')
+
 ##########################################
 with tab3:
     st.subheader("Finding Your Login Information:")
