@@ -70,6 +70,8 @@ with tab1:
         else: 
             st.write('Choose a format for your name')
 
+        components.html("""<div style="color: yellow;> Something on a yellow bg </div>""")
+        
         components.html(
     """
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
