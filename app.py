@@ -119,7 +119,7 @@ with tab4:
     st.write("NAME LENGTH RULES:")
     st.write("We recognize that East Asian names can sometimes be very few characters. Southeast Asian and Spanish names can sometimes be many, many characters.")
     st.write("We do not like the recent Southeast Asian trend of using a few initials as a last name. e.g. Kumar KS is not a good badge name because there are too many Kumar KS\'s in the world.")
-    st.write("If you are Southeast Asian, please use the longer version of your name - not a given name followed by initials for the family names.")
+    st.write("If you are Southeast Asian (eg Indian or Pakistani), please use the longer version of your name - not a given name followed by initials for the family names.")
     st.write("We check for name length so please use name that is long enough to be distinctive. Imagine that someone wants to challenge you by claiming your badge as theirs. You will want a name distinctive enough that you can prove the badge belongs to you, and not some one else with a similar name")
     st.write("-----")
     starts_right = uni_id[:3]
