@@ -18,7 +18,7 @@ uni_uuid = st.text_input('Enter the secret UUID displayed on the DORA is Listeni
 find_my_uni_record = st.button("Find my UNI User Info")
 
 if find_my_uni_record:
-    this_user_sql =  "select badge_given_name, badge_middle_name, badge_family_name, badge_email from UNI_USER_BADGENAME_BADGEEMAIL where UNI_ID='" + uni_id + "' and UNI_UUID='"+ uni_uuid +"'"
+    this_user_sql =  "select badge_given_name, badge_middle_name, badge_family_name, badge_email, nobiliary, display_format, display_name from UNI_USER_BADGENAME_BADGEEMAIL where UNI_ID='" + uni_id + "' and UNI_UUID='"+ uni_uuid +"'"
     this_user_df = session.sql(this_user_sql)
     user_results = this_user_df.to_pandas()                          
     user_rows = user_results.shape[0]
@@ -39,10 +39,19 @@ if find_my_uni_record:
             
         if 'badge_email' not in st.session_state:
             st.session_state['badge_email'] = user_results['BADGE_EMAIL'].iloc[0]
+
+        if 'badge_email' not in st.session_state:
+            st.session_state['nobiliary'] = user_results['HAS_NOBILIARY'].iloc[0]
+            
+        if 'display_format' not in st.session_state:
+            st.session_state['display_format'] = user_results['DISPLAY_FORMAT'].iloc[0]    
+
+        if 'display_name' not in st.session_state:
+            st.session_state['display_name'] = user_results['DISPLAY_NAME'].iloc[0]
     else:
         st.write("There is no record of the UNI_ID/UUID combination you entered. Please double-check the info you entered, read the tips on the FINDING INFO tab, and try again") 
 
-# Tabs
+###################################### Tabs
 tab1, tab2, tab3, tab4 = st.tabs(["View Your Name and Email", "Edit Your Name and Email","Finding Your Information", "Name Entry Rules"])
 
 with tab1:
@@ -52,6 +61,7 @@ with tab1:
         st.markdown("**MIDDLE/ALTERNATE NAME:** "+ st.session_state.middle_name) 
         st.markdown("**FAMILY NAME:** " + st.session_state.family_name)
         st.markdown("**EMAIL:** " + st.session_state.badge_email)
+        st.markdown("**Name Will Display on Badge As:** " + st.session_state.display_name)
         st.write("-----")
         st.markdown("*If you would like to make changes, edit your information on the next tab*")
     else:
@@ -106,13 +116,13 @@ with tab2:
                     
                
         if submit_edits:
-            session.call('AMAZING.APP.UPDATE_BADGENAME_BADGEEMAIL_SP',uni_id, uni_uuid, edited_given, edited_middle, edited_family, , lastname )
-            #st.success('Badge Info Updates', icon='🚀')
-            #st.experimental_rerun()
+            session.call('AMAZING.APP.UPDATE_BADGENAME_BADGEEMAIL_SP',uni_id, uni_uuid, edited_given, edited_middle, edited_family, edited_email, nobiliary, display_format, display_name )
+            st.success('Badge Info Updates', icon='🚀')
+            st.experimental_rerun()
             st.markdown("""---""")         
     else:
         st.write("Please sign in using your UNI_ID and UUID in the section above.")
-
+##########################################
 with tab3:
     st.subheader("Finding Your Login Information:")
     st.write("In order to make edits, you must enter the correct combination of your UNI ID and the UUID we have assigned to you.")
