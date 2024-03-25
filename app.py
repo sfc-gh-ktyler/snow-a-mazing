@@ -18,7 +18,7 @@ uni_uuid = st.text_input('Enter the secret UUID displayed on the DORA is Listeni
 find_my_uni_record = st.button("Find my UNI User Info")
 
 if find_my_uni_record:
-    //reset all session vars
+    # reset all session vars
     st.session_state['auth_status'] = 'not_authed'
     st.session_state['uni_id'] = uni_id
     st.session_state['given_name'] = ''
