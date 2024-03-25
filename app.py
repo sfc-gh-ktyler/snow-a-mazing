@@ -114,7 +114,7 @@ with tab4:
     st.write("CHARACTER CASE RULES:")
     st.write("* Proper Mixed Case is required for given names and middle names. (Initial-letter capitalization except for Nobiliary particles.)")
     st.write("* ALL UPPER CASE is allowed for Family names.")
-    st.write("* All lower case is NOT allowed for any name parts.")
+    st.write("* All lower case is NOT allowed for Given or Middle name parts.")
     st.write("-----")
     st.write("NAME LENGTH RULES:")
     st.write("We recognize that East Asian names can sometimes be very few characters. Southeast Asian and Spanish names can sometimes be many, many characters.")
