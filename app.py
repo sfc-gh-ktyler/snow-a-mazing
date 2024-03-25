@@ -55,27 +55,25 @@ with tab1:
                                captions = ["Common in Anglo Traditions", "Good for including alternate script names", "East Asian Standard Order", "Common for French and Francophonic"]
                                )
         if badge_name_order == "[Given] [Middle] [Family]" and name_has_nobiliary==True:
-          name_test = givenname.capitalize() + " " + middlename.capitalize() + " " + familyname
+            name_test = givenname.capitalize() + " " + middlename.capitalize() + " " + familyname
+        
         elif badge_name_order == "[Given] [Middle] [Family]" and name_has_nobiliary==False: 
-          name_test = givenname.capitalize() + " " + middlename.capitalize() + " " + familyname.capitalize() 
+            name_test = givenname.capitalize() + " " + middlename.capitalize() + " " + familyname.capitalize() 
+            st.subheader(name_test)
         elif badge_name_order == "[FAMILY] [Alternate-Spelling] [Given]": 
-          name_test = familyname.upper + " " + middlename + " " + givenname.capitalize() 
+            name_test = familyname.upper + " " + middlename + " " + givenname.capitalize() 
+            st.subheader(name_test)
         elif badge_name_order == "[FAMILY] [Given] [Middle]": 
-          name_test = familyname.upper + " " + givenname.capitalize() + " " +  middlename.capitalize() 
+            name_test = familyname.upper + " " + givenname.capitalize() + " " +  middlename.capitalize() 
         elif badge_name_order == "[Given] [Middle] [FAMILY]":
             name_test = givenname.capitalize() + " " +  middlename.capitalize() + " " + familyname.upper
         else: 
             st.write('Choose a format for your name')
             
-        st.subheader(name_test)
-      
-        edit_name = st.form_submit_button("Save My Name")
+        submit_edits = st.form_submit_button("Save My Name")
 
-    if show_my_name:
-      st.suheader(name_test)
 
-    submitted = st.button("Record My Name as Seen Above")
-    if submitted:
+    if submit_edits:
       #session.call('amazing.app.UPDATE_BADGE_INFO_SP',firstname, middlename, lastname )
       #st.success('Badge Info Updates', icon='🚀')
       #st.experimental_rerun()
