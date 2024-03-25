@@ -92,7 +92,7 @@ with tab2:
         st.write("Please sign in using your UNI_ID and UUID in the section above.")
 
 with tab3:
-    st.subheader("FINDING YOUR INFORMATION:")
+    st.subheader("Finding Your Login Information:")
     st.write("In order to make edits, you must enter the correct combination of your UNI ID and the UUID we have assigned to you.")
     st.write("Your UNI ID can be found in the top-right corner of the workshop page. It begins with 053 and is a string of letters and numbers.")
     st.write("Your learn.snowflake.com UNI_UUID is displayed on the page of the workshop that linked you to this app.")
