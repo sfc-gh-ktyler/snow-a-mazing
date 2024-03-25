@@ -5,6 +5,8 @@ cnx=st.connection("snowflake")
 session = cnx.session()
 if 'auth_status' not in st.session_state:
     st.session_state['auth_status'] = 'not_authed'
+if 'display_format' not in st.session_state:
+    st.session_state['display_format'] = 1
 
 st.session_state
 
@@ -70,29 +72,41 @@ with tab2:
                                    ["[Given] [Middle] [Family]","[FAMILY] [Alternate-Spelling] [Given]", "[FAMILY] [Given] [Middle]", "[Given] [Middle] [FAMILY]"],
                                    captions = ["Common in Anglo Traditions", "Good for including alternate script names", "East Asian Standard Order", "Common for French and Francophonic"]
                                    )
+            edited_email = st.text_input("The Email Address You Want Your Badge Sent To (does not have to match UNI, Snowflake Trial, or Work):", st.session_state.badge_email)
             submit_edits = st.form_submit_button("Show My Badge Name")
 
             if submit_edits:
                 if badge_name_order == "[Given] [Middle] [Family]" and name_has_nobiliary==True:
                     name_test = edited_given.capitalize() + " " + edited_middle.capitalize() + " " + edited_family
                     st.markdown("Your name will appear on your badge as: **" + name_test + "**")
+                    display_format = 1
+                    
                 elif badge_name_order == "[Given] [Middle] [Family]" and name_has_nobiliary==False: 
                     name_test = edited_given.capitalize() + " " + edited_middle.capitalize() + " " + edited_family.capitalize() 
                     st.markdown("Your name will appear on your badge as: **" + name_test + "**")
+                    display_format = 1
+                    
                 elif badge_name_order == "[FAMILY] [Alternate-Spelling] [Given]": 
                     name_test = edited_family.upper() + " " + edited_middle + " " + edited_given.capitalize() 
                     st.markdown("Your name will appear on your badge as: **" + name_test + "**")
+                    display_format = 2
+                    
                 elif badge_name_order == "[FAMILY] [Given] [Middle]": 
                     name_test = edited_family.upper() + " " + edited_given.capitalize() + " " +  edited_middle.capitalize() 
                     st.markdown("Your name will appear on your badge as: **" + name_test + "**")
+                    display_format = 3
+                    
                 elif badge_name_order == "[Given] [Middle] [FAMILY]":
                     name_test = edited_given.capitalize() + " " +  edited_middle.capitalize() + " " + edited_family.upper()
                     st.markdown("Your name will appear on your badge as: **" + name_test + "**")
+                    display_format = 4
+                    
                 else: 
                     st.write('Choose a format for your name')
+                    
                
         if submit_edits:
-            #session.call('amazing.app.UPDATE_BADGE_INFO_SP',firstname, middlename, lastname )
+            session.call('AMAZING.APP.UPDATE_BADGENAME_BADGEEMAIL_SP',uni_id, uni_uuid, edited_given, edited_middle, edited_family, , lastname )
             #st.success('Badge Info Updates', icon='🚀')
             #st.experimental_rerun()
             st.markdown("""---""")         
