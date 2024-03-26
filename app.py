@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+from snowflake.snowpark.functions import sproc, col, to_char
 
 # Session Initializations
 cnx=st.connection("snowflake")
