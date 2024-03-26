@@ -132,20 +132,19 @@ with tab4:
     st.subheader("View Trial Account and Badges Awarded Information")
     
     if st.session_state.auth_status == 'authed':
-        user_trials_sql =  "select award_id, short_course_id, account_locator, organization_id, account_name, type from AMAZING.APP.USER_ACCOUNT_INFO_BY_COURSE where UNI_ID=trim('" + uni_id + "') and UNI_UUID=trim('"+ uni_uuid +"')"
+         badge_options = pd.DataFrame({'badge_name':['Badge 1: DWW', 'Badge 2: CMCW', 'Badge 3: DABW', 'Badge 4: DLKW', 'Badge 5: DNGW'], 'award_name':['AWARD-DWW','AWARD-CMCW','AWARD-DABW','AWARD-DLKW','AWARD-DNGW']})
+            st.dataframe(badge_options)
+        workshop = st.selectbox("Choose Workshop/Badge want to enter/edit account info for:", options=badge_options, key=1)
+        st.session_state['workshop_chosen'] = workshop[9:13]
+        award_name = 'AWARD-'+st.session_state.workshop_chosen
+       
+        workshop_sql =  "select account_locator, organization_id, account_name, type from AMAZING.APP.USER_ACCOUNT_INFO_BY_COURSE where UNI_ID=trim('" + uni_id + "') and UNI_UUID=trim('"+ uni_uuid +"') and AWARD_ID = '" + award_name + "'"
         trials_df = session.sql(user_trials_sql)
         trials_results = trials_df.to_pandas()
         st.dataframe(trials_results)
         
         with st.form("workshops"):  
-            
-            badge_options = pd.DataFrame({'badge_name':['Badge 1: DWW', 'Badge 2: CMCW', 'Badge 3: DABW', 'Badge 4: DLKW', 'Badge 5: DNGW'], 'award_name':['AWARD-DWW','AWARD-CMCW','AWARD-DABW','AWARD-DLKW','AWARD-DNGW']})
-            st.dataframe(badge_options)
-            workshop = st.selectbox("Choose Workshop/Badge want to enter/edit account info for:", options=badge_options, key=1)
-            st.session_state['workshop_chosen'] = workshop[9:13]
-            award_name = 'AWARD-'+st.session_state.workshop_chosen
-            acct_info_sql = trials_results.filter(col("award_id")==award_name)
-            st.write(acct_info_sql)
+            st.write("editing will happen here")
             workshop_chosen = st.form_submit_button("Show Data on My Chosen Workshop")
  
 
