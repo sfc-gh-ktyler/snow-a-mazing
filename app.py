@@ -149,8 +149,8 @@ with tab4:
                 st.write("Your Account LOCATOR for " + workshop + " is: " + workshop_results.iloc[0]['ACCOUNT_LOCATOR'])
             if (workshop_results.iloc[0]['ORGANIZATION_ID'] is not None):    
                 st.write("Your Account ORGANIZATION for " + workshop + " is: " +workshop_results.iloc[0]['ORGANIZATION_ID'] or "Missing")
-             if (workshop_results.iloc[0]['ACCOUNT_NAME'] is not None):
-            st.write("Your ACCOUNT NAME for " + workshop + " is: " + workshop_results.iloc[0]['ACCOUNT_NAME'] or "Missing")
+            if (workshop_results.iloc[0]['ACCOUNT_NAME'] is not None):
+                st.write("Your ACCOUNT NAME for " + workshop + " is: " + workshop_results.iloc[0]['ACCOUNT_NAME'] or "Missing")
         else:
             st.write("You have to register interest in this badge and tell us about your Snowflake Trial Account.") 
             st.write("If you intend to pursue the " + st.session_state.workshop_acro + " badge, you should click create row to register your interest.")
