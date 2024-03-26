@@ -139,8 +139,8 @@ with tab4:
         with st.form("workshops"):          
             badge_options = ('Badge 1: DWW', 'Badge 2: CMCW', 'Badge 3: DABW', 'Badge 4: DLKW', 'Badge 5: DNGW')
             workshop = st.selectbox("Choose Workshop/Badge want to enter/edit account info for:", options=badge_options, key=1)
-            if 'workshop' not in st.session_state:
-                st.session_state['workshop'] = "AWARD-" + badge_options[9:13] #get characters 9 through 13 which should be the acronym
+            if 'workshop_chosen' not in st.session_state:
+                st.session_state['workshop_chosen'] = "AWARD-" + workshop[9:13] #get characters 9 through 13 which should be the acronym
                 st.write(st.session_state.workshop)
                 acct_info_sql = trials_results.filter(col("award_id")==st.session_state.workshop)
                 st.write(acct_info_sql)
