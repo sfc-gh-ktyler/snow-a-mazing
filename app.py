@@ -132,8 +132,8 @@ with tab4:
     st.subheader("View Trial Account and Badges Awarded Information")
     
     if st.session_state.auth_status == 'authed':
-         badge_options = pd.DataFrame({'badge_name':['Badge 1: DWW', 'Badge 2: CMCW', 'Badge 3: DABW', 'Badge 4: DLKW', 'Badge 5: DNGW'], 'award_name':['AWARD-DWW','AWARD-CMCW','AWARD-DABW','AWARD-DLKW','AWARD-DNGW']})
-            st.dataframe(badge_options)
+        badge_options = pd.DataFrame({'badge_name':['Badge 1: DWW', 'Badge 2: CMCW', 'Badge 3: DABW', 'Badge 4: DLKW', 'Badge 5: DNGW'], 'award_name':['AWARD-DWW','AWARD-CMCW','AWARD-DABW','AWARD-DLKW','AWARD-DNGW']})
+        st.dataframe(badge_options)
         workshop = st.selectbox("Choose Workshop/Badge want to enter/edit account info for:", options=badge_options, key=1)
         st.session_state['workshop_chosen'] = workshop[9:13]
         award_name = 'AWARD-'+st.session_state.workshop_chosen
