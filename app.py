@@ -142,7 +142,7 @@ with tab4:
             if 'workshop' not in st.session_state:
                 st.session_state['workshop'] = "AWARD-" + badge_options[9:13] #get characters 9 through 13 which should be the acronym
                 st.write(st.session_state.workshop)
-                acct_info_sql = trials_results.filter(col("award_id")==st.session_state.workshop
+                acct_info_sql = trials_results.filter(col("award_id")==st.session_state.workshop)
                 st.write(acct_info_sql)
             
             workshop_chosen = st.form_submit_button("Show Data on My Chosen Workshop")
