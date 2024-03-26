@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 
+
 # Session Initializations
 cnx=st.connection("snowflake")
 session = cnx.session()
