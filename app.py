@@ -142,7 +142,7 @@ with tab4:
         workshop_df = session.sql(workshop_sql)
         workshop_results = workshop_df.to_pandas()
 
-        st.write(workshop_results.iloc[0])
+        st.data_editor(workshop_results.iloc[0])
         #st.session_state['acct_loc'] = workshop_results[1]
         #st.write('Acct Loc is:' + st.session_state.acct_loc)
         
