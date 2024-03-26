@@ -145,8 +145,8 @@ with tab4:
             if 'workshop_chosen' not in st.session_state:
                 st.session_state['workshop_chosen'] = workshop[1]
             st.write(st.session_state.workshop_chosen)
-            acct_info_sql = trials_results.filter(col("award_id")==st.session_state.workshop_chosen)
-            st.write(acct_info_sql)
+            # acct_info_sql = trials_results.filter(col("award_id")==st.session_state.workshop_chosen)
+            # st.write(acct_info_sql)
             workshop_chosen = st.form_submit_button("Show Data on My Chosen Workshop")
  
 ########################
