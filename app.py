@@ -135,8 +135,8 @@ with tab4:
         badge_options = pd.DataFrame({'badge_name':['Badge 1: DWW', 'Badge 2: CMCW', 'Badge 3: DABW', 'Badge 4: DLKW', 'Badge 5: DNGW'], 'award_name':['AWARD-DWW','AWARD-CMCW','AWARD-DABW','AWARD-DLKW','AWARD-DNGW']})
         # st.dataframe(badge_options)
         workshop = st.selectbox("Choose Workshop/Badge want to enter/edit account info for:", options=badge_options, key=1)
-        st.session_state['workshop_chosen'] = workshop[9:13]
-        award_name = 'AWARD-'+st.session_state.workshop_chosen
+        st.session_state['workshop_acro'] = workshop[9:13]
+        award_name = 'AWARD-'+st.session_state.workshop_acro
         
         workshop_sql =  "select award_id, account_locator, organization_id, account_name from AMAZING.APP.USER_ACCOUNT_INFO_BY_COURSE where type = 'MAIN' and UNI_ID=trim('" + uni_id + "') and UNI_UUID=trim('"+ uni_uuid +"') and AWARD_ID = '" + award_name + "'"
         workshop_df = session.sql(workshop_sql)
@@ -148,7 +148,7 @@ with tab4:
             st.write(workshop_results.iloc[0]['organization_id'])
     
         else:
-            st.write("If you intend to pursue the " + workshop_chosen + " badge, you should click create row to register your interest.")
+            st.write("If you intend to pursue the " + st.session_state.workshop_acro + " badge, you should click create row to register your interest.")
                      
 
        
