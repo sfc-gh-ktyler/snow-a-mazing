@@ -148,7 +148,7 @@ with tab4:
             st.write(workshop_results.iloc[0]['organization_id'])
     
         else:
-            st.write('If you intend to pursue the " + workshop_chosen + " badge, you should click create row to register your interest.")
+            st.write("If you intend to pursue the " + workshop_chosen + " badge, you should click create row to register your interest.")
                      
 
        
