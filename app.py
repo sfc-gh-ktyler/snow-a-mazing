@@ -142,7 +142,7 @@ with tab4:
             badge_options = pd.DataFrame({'badge_name':['Badge 1: DWW', 'Badge 2: CMCW', 'Badge 3: DABW', 'Badge 4: DLKW', 'Badge 5: DNGW'], 'award_name':['AWARD-DWW','AWARD-CMCW','AWARD-DABW','AWARD-DLKW','AWARD-DNGW']})
             st.dataframe(badge_options)
             workshop = st.selectbox("Choose Workshop/Badge want to enter/edit account info for:", options=badge_options, key=1)
-            st.session_state['workshop_chosen'] = workshop[1]
+            st.session_state['workshop_chosen'] = workshop[0]
             st.write(st.session_state.workshop_chosen)
             # acct_info_sql = trials_results.filter(col("award_id")==st.session_state.workshop_chosen)
             # st.write(acct_info_sql)
