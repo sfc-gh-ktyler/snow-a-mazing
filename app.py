@@ -152,8 +152,7 @@ with tab4:
             if (workshop_results.iloc[0]['ACCOUNT_NAME'] is not None):
                 st.write("Your ACCOUNT NAME for " + workshop + " is: " + workshop_results.iloc[0]['ACCOUNT_NAME'] or "Missing")
         else:
-            st.write("You have to register interest in this badge and tell us about your Snowflake Trial Account.") 
-            st.write("If you intend to pursue the " + st.session_state.workshop_acro + " badge, you should click create row to register your interest.")
+            st.write("If you intend to pursue the " + st.session_state.workshop_acro + " badge, you should click the Register button below.")
             new_badge_interest = st.button("Register for the " + st.session_state.workshop_acro + " Badge")
 
             if new_badge_interest:
