@@ -138,7 +138,7 @@ with tab4:
         st.session_state['workshop_chosen'] = workshop[9:13]
         award_name = 'AWARD-'+st.session_state.workshop_chosen
        
-        workshop_sql =  "select account_locator, organization_id, account_name, type from AMAZING.APP.USER_ACCOUNT_INFO_BY_COURSE where UNI_ID=trim('" + uni_id + "') and UNI_UUID=trim('"+ uni_uuid +"') and AWARD_ID = '" + award_name + "'"
+        workshop_sql =  "select award_id, account_locator, organization_id, account_name from AMAZING.APP.USER_ACCOUNT_INFO_BY_COURSE where type = 'MAIN' and UNI_ID=trim('" + uni_id + "') and UNI_UUID=trim('"+ uni_uuid +"') and AWARD_ID = '" + award_name + "'"
         workshop_df = session.sql(workshop_sql)
         workshop_results = workshop_df.to_pandas()
         st.dataframe(workshop_results)
