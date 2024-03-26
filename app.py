@@ -144,8 +144,8 @@ with tab4:
         workshop_rows = workshop_results.shape[0]
         
         if workshop_rows>=1:
-            st.write(workshop_results.iloc[0]['account_locator'])
-            st.write(workshop_results.iloc[0]['organization_id'])
+            st.write(workshop_results.iloc[0]['ACCOUNT_LOCATOR'])
+            st.write(workshop_results.iloc[0]['ORGANIZATION_ID'])
     
         else:
             st.write("If you intend to pursue the " + st.session_state.workshop_acro + " badge, you should click create row to register your interest.")
