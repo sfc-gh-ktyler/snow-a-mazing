@@ -139,9 +139,9 @@ with tab4:
         award_name = 'AWARD-'+st.session_state.workshop_chosen
        
         workshop_sql =  "select account_locator, organization_id, account_name, type from AMAZING.APP.USER_ACCOUNT_INFO_BY_COURSE where UNI_ID=trim('" + uni_id + "') and UNI_UUID=trim('"+ uni_uuid +"') and AWARD_ID = '" + award_name + "'"
-        trials_df = session.sql(user_trials_sql)
-        trials_results = trials_df.to_pandas()
-        st.dataframe(trials_results)
+        workshop_df = session.sql(workshop_sql)
+        workshop_results = workshop_df.to_pandas()
+        st.dataframe(workshop_results)
         
         with st.form("workshops"):  
             st.write("editing will happen here")
