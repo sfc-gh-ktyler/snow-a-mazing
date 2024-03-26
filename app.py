@@ -141,9 +141,9 @@ with tab4:
             
             badge_options = DataFrame({'badge_name':['Badge 1: DWW', 'Badge 2: CMCW', 'Badge 3: DABW', 'Badge 4: DLKW', 'Badge 5: DNGW'], 'award_name':['AWARD-DWW','AWARD-CMCW','AWARD-DABW','AWARD-DLKW','AWARD-DNGW']})
             st.dataframe(badge_options)
-            workshop = st.selectbox("Choose Workshop/Badge want to enter/edit account info for:", options=badge_options, format_func= key=1)
+            workshop = st.selectbox("Choose Workshop/Badge want to enter/edit account info for:", options=badge_options, key=1)
             if 'workshop_chosen' not in st.session_state:
-                st.session_state['workshop_chosen'] = "AWARD-" & workshop[9:13] #get characters 9 through 13 which should be the acronym
+                st.session_state['workshop_chosen'] = workshop[1]
             st.write(st.session_state.workshop)
             acct_info_sql = trials_results.filter(col("award_id")==st.session_state.workshop)
             st.write(acct_info_sql)
