@@ -17,7 +17,8 @@ st.session_state
 st.header('Are You Snow-A-Mazing?')
 st.write('Welcome to the learn.snowflake.com Workshop Badge Management app!')
 
-uni_id = strip(st.text_input('Enter your learn.snowflake.com UNI ID:'))
+uni_id = st.text_input('Enter your learn.snowflake.com UNI ID:')
+uni_id = strip(uni_id)
 uni_uuid = st.text_input('Enter the secret UUID displayed on the DORA is Listening Page:')
 find_my_uni_record = st.button("Find my UNI User Info")
 
