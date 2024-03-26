@@ -141,14 +141,15 @@ with tab4:
         workshop_sql =  "select award_id, account_locator, organization_id, account_name from AMAZING.APP.USER_ACCOUNT_INFO_BY_COURSE where type = 'MAIN' and UNI_ID=trim('" + uni_id + "') and UNI_UUID=trim('"+ uni_uuid +"') and AWARD_ID = '" + award_name + "'"
         workshop_df = session.sql(workshop_sql)
         workshop_results = workshop_df.to_pandas()
+
+        st.write(workshop_results.iloc[0])
+        #st.session_state['acct_loc'] = workshop_results[1]
+        #st.write('Acct Loc is:' + st.session_state.acct_loc)
         
-        st.session_state['acct_loc'] = workshop_results[1]
-        st.write('Acct Loc is:' + st.session_state.acct_loc)
+        #st.session_state['org_id'] = workshop_results[2]
+        #st.write('Org ID is:' + st.session_state.org_id)  
         
-        st.session_state['org_id'] = workshop_results[2]
-        st.write('Org ID is:' + st.session_state.org_id)  
-        
-        st.session_state['acct_nm'] = workshop_results[3]
+        #st.session_state['acct_nm'] = workshop_results[3]
         
                
 
