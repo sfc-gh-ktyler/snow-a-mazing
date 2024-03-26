@@ -145,8 +145,11 @@ with tab4:
         
         if workshop_rows>=1:
             st.write("We found your Trial Account Info. Please make sure it is complete!")
-            st.write("Your Account LOCATOR for " + workshop + " is: " + (workshop_results.iloc[0]['ACCOUNT_LOCATOR'] or "<You need to enter your account locator>"))
-            st.write("Your Account ORGANIZATION for " + workshop + " is: " +workshop_results.iloc[0]['ORGANIZATION_ID'] or "Missing")
+            if (workshop_results.iloc[0]['ACCOUNT_LOCATOR'] is not None):
+                st.write("Your Account LOCATOR for " + workshop + " is: " + workshop_results.iloc[0]['ACCOUNT_LOCATOR'])
+            if (workshop_results.iloc[0]['ORGANIZATION_ID'] is not None):    
+                st.write("Your Account ORGANIZATION for " + workshop + " is: " +workshop_results.iloc[0]['ORGANIZATION_ID'] or "Missing")
+             if (workshop_results.iloc[0]['ACCOUNT_NAME'] is not None):
             st.write("Your ACCOUNT NAME for " + workshop + " is: " + workshop_results.iloc[0]['ACCOUNT_NAME'] or "Missing")
         else:
             st.write("You have to register interest in this badge and tell us about your Snowflake Trial Account.") 
