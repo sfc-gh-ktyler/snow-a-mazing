@@ -143,20 +143,13 @@ with tab4:
         workshop_results = workshop_df.to_pandas()
         workshop_rows = workshop_results.shape[0]
         
-        if workskop_rows>=1:
+        if workshop_rows>=1:
             st.write(workshop_results.iloc[0]['account_locator'])
             st.write(workshop_results.iloc[0]['organization_id'])
-            #st.session_state['acct_loc'] = workshop_results[1]
-            #st.write('Acct Loc is:' + st.session_state.acct_loc)
-        
-            #st.session_state['org_id'] = workshop_results[2]
-            #st.write('Org ID is:' + st.session_state.org_id)  
-        
-            #st.session_state['acct_nm'] = workshop_results[3]
+    
         else:
-            st.write('If you intend to purse the "+ workshop_chosen + " badge, you should click create row to register your interest.")
-        
-               
+            st.write('If you intend to pursue the " + workshop_chosen + " badge, you should click create row to register your interest.")
+                     
 
        
         
