@@ -143,9 +143,9 @@ with tab4:
             st.dataframe(badge_options)
             workshop = st.selectbox("Choose Workshop/Badge want to enter/edit account info for:", options=badge_options, key=1)
             st.session_state['workshop_chosen'] = workshop[9:13]
-            st.write('AWARD-'+st.session_state.workshop_chosen)
-            #acct_info_sql = trials_results.filter(col("award_id")==st.session_state.workshop_chosen)
-            # st.write(acct_info_sql)
+            award_name = 'AWARD-'+st.session_state.workshop_chosen
+            acct_info_sql = trials_results.filter(col("award_id")==award_name)
+            st.write(acct_info_sql)
             workshop_chosen = st.form_submit_button("Show Data on My Chosen Workshop")
  
 
