@@ -148,9 +148,17 @@ with tab4:
             st.write(workshop_results.iloc[0]['ORGANIZATION_ID'])
     
         else:
+            st.write("You have to registered interest in this badge.") 
             st.write("If you intend to pursue the " + st.session_state.workshop_acro + " badge, you should click create row to register your interest.")
-                     
+            new_badge_interest = st.button("Register for the" + st.session_state.workshop_acro + "Badge")
 
+            if new_badge_interest:
+                with st.form("new_workshop_interest"):
+                    new_acct_id = st.text_input("Enter the ACCOUNT ID of Your Snowflake Trial Account:")
+                    new_acct_loc = st.text_input("Enter the ACCOUNT LOCATOR of Your Snowflake Trial Account:")
+                    new_info_submit = st.form_submit_button("Submit My New Trial Account Info") 
+            if new_info_submit:
+                st.write("thanks for submitting your info")
        
         
         st.dataframe(workshop_results)
