@@ -169,9 +169,9 @@ with tab4:
        
     
         
-        with st.form("workshops"):  
-            st.write("editing will happen here")
-            workshop_chosen = st.form_submit_button("Show Data on My Chosen Workshop")
+        #with st.form("workshops"):  
+         #   st.write("editing will happen here")
+         #   workshop_chosen = st.form_submit_button("Show Data on My Chosen Workshop")
  
 
 
